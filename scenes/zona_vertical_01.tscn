@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8cq6vatu3s3w"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_mq1ou"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.135925, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_mq1ou")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.135925, 0, 0, 0, 1, -1.30011, 0.744657, 0.128733)
+mesh = SubResource("BoxMesh_mq1ou")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.135925, 0, 0, 0, 1, 0.0923141, 1.23681, -1.00356)
+mesh = SubResource("BoxMesh_mq1ou")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.135925, 0, 0, 0, 1, 0.123115, -3.23509, -1.90389)
+mesh = SubResource("BoxMesh_mq1ou")

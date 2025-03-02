@@ -1,9 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://dn8hadwtayo2g"]
+[gd_scene load_steps=5 format=3 uid="uid://dn8hadwtayo2g"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_8xo4p"]
+[ext_resource type="PackedScene" uid="uid://c334msi5eywjn" path="res://scenes/player.tscn" id="1_mgspa"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mh36j"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_36186"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_taa55"]
+albedo_color = Color(1, 0, 1, 1)
 
 [node name="Node3D" type="Node3D"]
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="."]
+transform = Transform3D(5.8, 0, 0, 0, 5.8, 0, 0, 0, 5.8, 0, 0, 0)
 use_collision = true
-mesh = SubResource("BoxMesh_8xo4p")
+mesh = SubResource("PlaneMesh_mh36j")
+
+[node name="player" parent="." instance=ExtResource("1_mgspa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.849772, 0)
+grounded_movement_speed = 250.0
+coyote_time = 0.2
+jump_velocity = 6.0
+airborne_movement_speed = 250.0
+fall_velocity = 1.5
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.499456, -2.3591)
+use_collision = true
+mesh = SubResource("BoxMesh_36186")
+material = SubResource("StandardMaterial3D_taa55")

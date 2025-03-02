@@ -66,8 +66,16 @@ func process_input(event: InputEvent):
 
 func _read_movement_input():
 	var input_direction := Input.get_vector("move_left", "move_right", "move_forward", "move_backwards")
-	_movement_direction = (_camera.transform.basis * Vector3(input_direction.x, 0, input_direction.y)).normalized()
-	_movement_direction.y = 0
+	
+	# Get the direction the camera is pointing to without a vertical component
+	var camera_forward := _camera.transform.basis.z.normalized()
+	camera_forward.y = 0
+	camera_forward = camera_forward.normalized()
+	var camera_right := _camera.transform.basis.x.normalized()
+	camera_right.y = 0
+	camera_right = camera_right.normalized()
+	
+	_movement_direction = (camera_right * input_direction.x + camera_forward * input_direction.y).normalized()
 
 func _move(delta : float) -> void:
 	if _movement_direction:

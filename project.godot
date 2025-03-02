@@ -15,6 +15,15 @@ run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+
+[editor]
+
+movie_writer/movie_file="/var/home/brionzer/Godot/runrotgame/gameplay_test.avi"
+
 [input]
 
 move_backwards={

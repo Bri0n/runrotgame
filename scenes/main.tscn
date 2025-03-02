@@ -1,20 +1,51 @@
-[gd_scene load_steps=5 format=3 uid="uid://dn8hadwtayo2g"]
+[gd_scene load_steps=13 format=3 uid="uid://dn8hadwtayo2g"]
 
+[ext_resource type="Texture2D" uid="uid://bkwg4vypyff56" path="res://assets/textures/grass_03.png" id="1_3lyip"]
 [ext_resource type="PackedScene" uid="uid://c334msi5eywjn" path="res://scenes/player.tscn" id="1_mgspa"]
+[ext_resource type="PackedScene" uid="uid://c8cq6vatu3s3w" path="res://scenes/zona_vertical_01.tscn" id="1_ps05p"]
+[ext_resource type="PackedScene" uid="uid://mq3toad3d1cf" path="res://scenes/kill_zone.tscn" id="3_1eh22"]
+[ext_resource type="Texture2D" uid="uid://f81fxa1hi2jw" path="res://assets/textures/brick_red_04.jpg" id="3_l6dgh"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j6pp0"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+sky_energy_multiplier = 2.0
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_76sgc"]
+sky_material = SubResource("ProceduralSkyMaterial_j6pp0")
+
+[sub_resource type="Environment" id="Environment_xkdmc"]
+background_mode = 2
+sky = SubResource("Sky_76sgc")
+tonemap_mode = 2
+glow_enabled = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_mh36j"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gk2fe"]
+albedo_texture = ExtResource("1_3lyip")
+uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_36186"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_taa55"]
-albedo_color = Color(1, 0, 1, 1)
+albedo_texture = ExtResource("3_l6dgh")
+uv1_triplanar = true
 
 [node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xkdmc")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(-0.993572, -0.0879754, 0.0712411, 0, 0.62932, 0.777146, -0.113203, 0.77215, -0.625275, 0, 0, 0)
+shadow_enabled = true
 
 [node name="CSGMesh3D2" type="CSGMesh3D" parent="."]
 transform = Transform3D(5.8, 0, 0, 0, 5.8, 0, 0, 0, 5.8, 0, 0, 0)
 use_collision = true
 mesh = SubResource("PlaneMesh_mh36j")
+material = SubResource("StandardMaterial3D_gk2fe")
 
 [node name="player" parent="." instance=ExtResource("1_mgspa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.849772, 0)
@@ -29,3 +60,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.499456, -2.3591)
 use_collision = true
 mesh = SubResource("BoxMesh_36186")
 material = SubResource("StandardMaterial3D_taa55")
+
+[node name="Node3D" parent="." instance=ExtResource("1_ps05p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1222, 0, -0.0295286)
+
+[node name="Killzone" parent="." instance=ExtResource("3_1eh22")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)

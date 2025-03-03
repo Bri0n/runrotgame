@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bmitawbvtqfri" path="res://scenes/chips_pickup.tscn" id="4_4sd3v"]
 [ext_resource type="PackedScene" uid="uid://l6w78bgb0o7l" path="res://scenes/transition_hallway.tscn" id="5_n8h0x"]
 [ext_resource type="PackedScene" uid="uid://mq3toad3d1cf" path="res://scenes/kill_zone.tscn" id="6_2a00g"]
-[ext_resource type="PackedScene" uid="uid://5y3bel5x7d6h" path="res://scenes/level_02.tscn" id="7_fu88m"]
+[ext_resource type="PackedScene" uid="uid://dwo6ho8khh2gg" path="res://scenes/level_02.tscn" id="7_fu88m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ov7n"]
 albedo_texture = ExtResource("1_xf7ec")

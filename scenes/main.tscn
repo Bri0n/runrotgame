@@ -18,7 +18,7 @@ sky = SubResource("Sky_76sgc")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="Node3D" type="Node3D"]
+[node name="game" type="Node3D"]
 script = ExtResource("1_irbja")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

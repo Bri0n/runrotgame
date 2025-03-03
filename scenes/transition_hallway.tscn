@@ -72,13 +72,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.08044)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0411072, 7.55457, -1.56097)
 shape = SubResource("BoxShape3D_a1jyv")
 
-[node name="scene_switch_trigger" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.01212)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="scene_switch_trigger"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0411072, 7.55457, -1.56097)
-shape = SubResource("BoxShape3D_a1jyv")
-
 [connection signal="body_entered" from="scene_load_trigger" to="." method="_on_scene_load_triggered"]
-[connection signal="body_entered" from="scene_switch_trigger" to="." method="_on_scene_switch_trigger"]
-[connection signal="body_entered" from="scene_switch_trigger" to="." method="_on_scene_load_triggered"]

@@ -10,10 +10,4 @@ func _ready() -> void:
 
 func _on_scene_load_triggered(body: Node3D) -> void:
 	if body.name == GlobalConstants.PLAYER_NAME and next_scene:
-		print(next_scene.resource_path)
-		GameManager.load_next_scene(next_scene, position)
-
-
-func _on_scene_switch_trigger(body: Node3D) -> void:
-	if body.name == GlobalConstants.PLAYER_NAME:
-		GameManager.unload_previous_scene()
+		GameManager.load_next_scene(next_scene)

@@ -24,6 +24,10 @@ window/size/viewport_height=720
 
 movie_writer/movie_file="/var/home/brionzer/Godot/runrotgame/gameplay_test.avi"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 move_backwards={

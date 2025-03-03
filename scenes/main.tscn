@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dn8hadwtayo2g"]
+[gd_scene load_steps=8 format=3 uid="uid://dn8hadwtayo2g"]
 
-[ext_resource type="PackedScene" uid="uid://cukwwoh4efd66" path="res://scenes/starting_area.tscn" id="1_73xcv"]
+[ext_resource type="PackedScene" path="res://scenes/starting_area.tscn" id="1_73xcv"]
 [ext_resource type="Script" path="res://scripts/GameStarter.gd" id="1_irbja"]
 [ext_resource type="PackedScene" uid="uid://c334msi5eywjn" path="res://scenes/player.tscn" id="1_mgspa"]
+[ext_resource type="AudioStream" uid="uid://2trqx48xt366" path="res://audio/music/aerk-core-22-one-257976.mp3" id="4_itupe"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j6pp0"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -18,7 +19,7 @@ sky = SubResource("Sky_76sgc")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="game" type="Node3D"]
+[node name="Node3D" type="Node3D"]
 script = ExtResource("1_irbja")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -36,10 +37,16 @@ shadow_enabled = true
 
 [node name="player" parent="." instance=ExtResource("1_mgspa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.849772, 0)
-grounded_movement_speed = 275.0
 coyote_time = 0.2
 jump_velocity = 6.0
 airborne_movement_speed = 250.0
 fall_velocity = 1.5
+
+[node name="AudioManager" type="Node3D" parent="."]
+
+[node name="MainTheme" type="AudioStreamPlayer" parent="AudioManager"]
+stream = ExtResource("4_itupe")
+volume_db = -14.054
+autoplay = true
 
 [editable path="current_level/starting_area"]

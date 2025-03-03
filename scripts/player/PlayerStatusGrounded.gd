@@ -5,6 +5,7 @@ class_name PlayerStatusGrounded
 const PlayerMovementCommands = preload("res://scripts/GlobalConstants.gd").PlayerMovementCommands
 var _camera: Node3D
 var _movement_speed : float
+var _sprint_speed : float
 var _movement_direction : Vector3 = Vector3.ZERO
 var _player : PlayerMovement
 var _parameters
@@ -19,6 +20,7 @@ func _init(player : PlayerMovement, parameters : PlayerMovementParameters):
 	_camera = parameters.camera
 	_player = player
 	_movement_speed = parameters.grounded_movement_speed
+	_sprint_speed = parameters.sprint_movement_speed
 	_coyote_time = parameters.coyote_time
 	_jump_velocity = parameters.jump_velocity
 	_parameters = parameters
@@ -52,6 +54,14 @@ func _read_movement_input():
 	
 	_movement_direction = (camera_right * input_direction.x + camera_forward * input_direction.y).normalized()
 
+	if Input.is_action_pressed("sprint"):
+		#_movement_speed = _sprint_speed 
+		_movement_speed = move_toward(_movement_speed, _sprint_speed, 10.0)
+
+	else:
+		_movement_speed = _parameters.grounded_movement_speed
+		# _movement_speed = move_toward(_movement_speed, _sprint_speed, 10.0)
+		
 func process_input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):
 		_handle_jump()

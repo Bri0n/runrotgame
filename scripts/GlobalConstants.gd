@@ -3,6 +3,7 @@ extends Node
 enum PlayerMovementCommands {
 	NONE,
 	JUMP,
+	SPRINT,
 }
 
 const PLAYER_NAME := "player"

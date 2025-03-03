@@ -7,7 +7,8 @@ var current_status : PlayerStatus
 var parameters : PlayerMovementParameters
 
 @export_group("Grounded")
-@export var grounded_movement_speed := 200.0
+@export var grounded_movement_speed := 350.0
+@export var sprint_movement_speed := 500.0
 @export var coyote_time := 0.5
 @export var jump_velocity := 7.00
 
@@ -23,6 +24,7 @@ func _ready() -> void:
 	parameters = PlayerMovementParameters.new(
 		camera,
 		grounded_movement_speed,
+		sprint_movement_speed,
 		coyote_time,
 		jump_velocity,
 		fall_velocity,

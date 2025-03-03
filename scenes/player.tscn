@@ -1,10 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://c334msi5eywjn"]
+[gd_scene load_steps=6 format=3 uid="uid://c334msi5eywjn"]
 
 [ext_resource type="Script" path="res://scripts/player/PlayerMovement.gd" id="1_syqdp"]
 [ext_resource type="Script" path="res://scripts/Camera.gd" id="2_r6yi5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lf2ej"]
 height = 2.23227
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5it0m"]
+albedo_color = Color(1, 0.239216, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_aumo1"]
+material = SubResource("StandardMaterial3D_5it0m")
+size = Vector3(0.2, 0.2, 0.5)
 
 [node name="player" type="CharacterBody3D"]
 script = ExtResource("1_syqdp")
@@ -15,3 +22,7 @@ shape = SubResource("CapsuleShape3D_lf2ej")
 
 [node name="first_person_camera" type="Camera3D" parent="."]
 script = ExtResource("2_r6yi5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.575)
+mesh = SubResource("BoxMesh_aumo1")

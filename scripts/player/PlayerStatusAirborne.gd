@@ -19,6 +19,7 @@ var _fall_velocity : float
 
 # Double jump
 var _extra_jumps : int
+var _initial_velocity: Vector3
 
 func _init(
 	player : PlayerMovement,
@@ -46,6 +47,7 @@ func _init(
 
 func enter_state():
 	print("Entered Airborne State.")
+	_initial_velocity = _player.velocity
 	# If the player enters the state by walking off a ledge,
 	# it enters the state without vertical velocity
 
@@ -81,15 +83,15 @@ func _read_movement_input():
 
 func _move(delta : float) -> void:
 	if _movement_direction:
-		_player.velocity.x = _movement_direction.x * _movement_speed * delta
-		_player.velocity.z = _movement_direction.z * _movement_speed * delta
-		var horizontal_direction = Vector3(_movement_direction.x, 0, _movement_direction.z).normalized()
-		var target_position = _player.global_transform.origin - horizontal_direction
+		_player.velocity.x += _movement_direction.x * _movement_speed * delta
+		_player.velocity.z += _movement_direction.z * _movement_speed * delta
+		_player.velocity.x = clamp(_player.velocity.x, -(_initial_velocity.x), _initial_velocity.x)
+		_player.velocity.z = clamp(_player.velocity.z, -(_initial_velocity.z), _initial_velocity.z)
 
 	else:
 		_player.velocity.x = move_toward(_player.velocity.x, 0, _movement_speed * delta)
 		_player.velocity.z = move_toward(_player.velocity.z, 0, _movement_speed * delta)
-
+			
 func _double_jump():
 	if _extra_jumps > 0:
 		_extra_jumps -= 1

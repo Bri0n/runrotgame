@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://5y3bel5x7d6h"]
+
+[ext_resource type="PackedScene" uid="uid://l6w78bgb0o7l" path="res://scenes/transition_hallway.tscn" id="1_mf7f7"]
+
+[node name="Level02" type="Node3D"]
+
+[node name="entry_transition_hallway" parent="." instance=ExtResource("1_mf7f7")]
+
+[node name="exit_transition_hallway" parent="." instance=ExtResource("1_mf7f7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.80798)

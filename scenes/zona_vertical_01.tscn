@@ -1,9 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://c8cq6vatu3s3w"]
+[gd_scene load_steps=14 format=3 uid="uid://c8cq6vatu3s3w"]
 
 [ext_resource type="Texture2D" uid="uid://bhwfieapy6665" path="res://assets/textures/concrete_05.png" id="1_xf7ec"]
 [ext_resource type="Texture2D" uid="uid://bvsqpxfswtiae" path="res://assets/textures/concrete_15.jpg" id="2_omnrn"]
 [ext_resource type="Texture2D" uid="uid://cn5qbsipuhyj1" path="res://assets/textures/river_ice_01.jpg" id="3_pb51d"]
 [ext_resource type="PackedScene" uid="uid://bmitawbvtqfri" path="res://scenes/chips_pickup.tscn" id="4_4sd3v"]
+[ext_resource type="PackedScene" uid="uid://l6w78bgb0o7l" path="res://scenes/transition_hallway.tscn" id="5_n8h0x"]
+[ext_resource type="PackedScene" uid="uid://mq3toad3d1cf" path="res://scenes/kill_zone.tscn" id="6_2a00g"]
+[ext_resource type="PackedScene" uid="uid://5y3bel5x7d6h" path="res://scenes/level_02.tscn" id="7_fu88m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ov7n"]
 albedo_texture = ExtResource("1_xf7ec")
@@ -31,11 +34,12 @@ uv1_triplanar = true
 [node name="Node3D" type="Node3D"]
 
 [node name="platforms" type="CSGCombiner3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.93423, 0, -6.89246)
 material_override = SubResource("StandardMaterial3D_0ov7n")
 use_collision = true
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="platforms"]
-transform = Transform3D(5.99256, 0, 0, 0, 10.6764, 0, 0, 0, 5.99256, 0, -5.6486, 0)
+transform = Transform3D(5.99256, 0, 0, 0, 10.6764, 0, 0, 0, 5.99256, 0, -5.6124, 0)
 use_collision = true
 mesh = SubResource("BoxMesh_mq1ou")
 
@@ -50,7 +54,7 @@ use_collision = true
 mesh = SubResource("BoxMesh_mq1ou")
 
 [node name="CSGMesh3D3" type="CSGMesh3D" parent="platforms"]
-transform = Transform3D(3.05865, 0, 0, 0, 2.54974, 0, 0, 0, 3.05865, 0.479574, 1.21251, -10.5907)
+transform = Transform3D(3.05865, 0, 0, 0, 2.03979, 0, 0, 0, 3.05865, 0.479574, 1.21251, -10.5907)
 use_collision = true
 mesh = SubResource("BoxMesh_mq1ou")
 
@@ -65,7 +69,7 @@ use_collision = true
 mesh = SubResource("BoxMesh_mq1ou")
 
 [node name="CSGMesh3D37" type="CSGMesh3D" parent="platforms"]
-transform = Transform3D(3.69474, 0.525025, 0, -2.13316, 0.909371, 0, 0, 0, 0.917595, -1.45296, 2.9387, -10.5562)
+transform = Transform3D(4.01471, 0.551276, 0, -2.3179, 0.95484, 0, 0, 0, 0.917595, -1.353, 2.799, -10.556)
 use_collision = true
 mesh = SubResource("BoxMesh_mq1ou")
 
@@ -230,6 +234,7 @@ use_collision = true
 mesh = SubResource("BoxMesh_mq1ou")
 
 [node name="walls" type="CSGCombiner3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.93423, 0, -6.89246)
 material_override = SubResource("StandardMaterial3D_wcy6j")
 use_collision = true
 
@@ -255,20 +260,20 @@ operation = 2
 size = Vector3(0.23877, 2.44611, 1.20486)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.87584, 3.65617, -0.0037539)
-size = Vector3(0.23877, 8.31235, 5.98547)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.95043, 3.65617, -0.0037539)
+size = Vector3(0.0895998, 8.31235, 5.98547)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="walls/CSGBox3D4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.70273, 0.0125732)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.05354, 0.0221024)
 operation = 2
-size = Vector3(0.23877, 2.43939, 4)
+size = Vector3(0.23877, 1.79805, 0.911697)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.87584, -1.58384, -4.8138)
 size = Vector3(0.23877, 18.7807, 4)
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="walls"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.45325, 0.125818, -6.6992)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.45325, 0.125818, -6.9992)
 size = Vector3(0.23877, 22.2, 5.34839)
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="walls"]
@@ -288,9 +293,9 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.481
 size = Vector3(0.23877, 25, 9.15977)
 
 [node name="CSGBox3D14" type="CSGBox3D" parent="walls/CSGBox3D12"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.55, -0.479887)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.36538, -0.452256)
 operation = 2
-size = Vector3(0.23877, 2.3, 1.6)
+size = Vector3(0.23877, 1.93076, 0.917639)
 
 [node name="CSGBox3D13" type="CSGBox3D" parent="walls"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.48108, 14.3865, -15.8091)
@@ -301,6 +306,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.9506
 size = Vector3(0.23877, 20.0411, 1.95984)
 
 [node name="lava" type="CSGCombiner3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.93423, 0, -6.89246)
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="lava"]
 transform = Transform3D(6.6566, 0, 0, 0, 3.21476, 0, 0, 0, 21.3178, -1.7033, -5, -20.8862)
@@ -309,6 +315,7 @@ mesh = SubResource("PlaneMesh_owb7v")
 material = SubResource("StandardMaterial3D_beuub")
 
 [node name="ceiling" type="CSGCombiner3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.93423, 0, -6.89246)
 material_override = SubResource("StandardMaterial3D_3f38w")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="ceiling"]
@@ -328,10 +335,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.63146, 10.9608, -11.4961)
 size = Vector3(5.86414, 0.315918, 8.97205)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="ceiling"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7136, 17.6077, -25.5253)
-size = Vector3(9.69986, 0.315918, 19.5222)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7136, 17.6077, -25.7358)
+size = Vector3(9.69986, 0.315918, 19.9432)
 
 [node name="lights" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.93423, 0, -6.89246)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 4.45006, -1)
@@ -357,6 +365,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1, 7.65006, -12.2)
 omni_range = 15.0
 
 [node name="pickups" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.93423, 0, -6.89246)
 
 [node name="chips_pickup" parent="pickups" instance=ExtResource("4_4sd3v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
@@ -372,3 +381,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1, 12.8, -27.7)
 
 [node name="chips_pickup5" parent="pickups" instance=ExtResource("4_4sd3v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 13.3, -19.5)
+
+[node name="entry_transition_hallway" parent="." instance=ExtResource("5_n8h0x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.938, 0, 0)
+
+[node name="Killzone" parent="." instance=ExtResource("6_2a00g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+
+[node name="exit_transition_hallway" parent="." instance=ExtResource("5_n8h0x")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.6661, 10.3787, -3.88595)
+next_scene = ExtResource("7_fu88m")

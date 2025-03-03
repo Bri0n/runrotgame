@@ -63,6 +63,8 @@ func process_state(delta : float):
 func process_input(event: InputEvent):
 	if event.is_action_pressed("jump"):
 		_double_jump()
+	if event.is_action_pressed("noclip"):
+		_player.change_status(PlayerStatusNoClip.new(_player, _parameters))
 
 func _read_movement_input():
 	var input_direction := Input.get_vector("move_left", "move_right", "move_forward", "move_backwards")

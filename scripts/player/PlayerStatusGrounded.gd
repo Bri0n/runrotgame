@@ -55,6 +55,8 @@ func _read_movement_input():
 func process_input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):
 		_handle_jump()
+	if event.is_action_pressed("noclip"):
+		_player.change_status(PlayerStatusNoClip.new(_player, _parameters))
 
 func _handle_jump() -> void:
 	if _coyote_time_timer > 0:

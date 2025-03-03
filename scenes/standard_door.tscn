@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://blc1vv6wtvscp"]
+
+[ext_resource type="Script" path="res://scripts/StandardDoor.gd" id="1_56rjx"]
+[ext_resource type="PackedScene" uid="uid://bhtexjbv1ucb1" path="res://assets/models/door_brown_a.glb" id="1_unvlk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y4nko"]
+size = Vector3(0.881226, 1.87903, 0.0450134)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n7lm5"]
+size = Vector3(0.886353, 1.90244, 0.550537)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kcssu"]
+size = Vector3(1, 2.23047, 1.70753)
+
+[node name="StandardDoor" type="Area3D"]
+script = ExtResource("1_56rjx")
+
+[node name="door_brown_a" parent="." instance=ExtResource("1_unvlk")]
+
+[node name="Empty" parent="door_brown_a" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="door_brown_a/Empty" index="0"]
+
+[node name="door_sheet_collider" type="CollisionShape3D" parent="door_brown_a/Empty/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.460266, 0.947693, 0.00367737)
+shape = SubResource("BoxShape3D_y4nko")
+
+[node name="door_closed_collider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.451544, 0.956318, 0.000522152)
+shape = SubResource("BoxShape3D_n7lm5")
+
+[node name="door_opened_collider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.615234, 0.475929)
+shape = SubResource("BoxShape3D_kcssu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+
+[editable path="door_brown_a"]

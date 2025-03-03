@@ -16,6 +16,9 @@ var parameters : PlayerMovementParameters
 @export var extra_jumps := 1
 @export var fall_velocity := 1.00
 
+# Debug
+@onready var player_collider : CollisionShape3D = $player_collider
+
 func _ready() -> void:
 	parameters = PlayerMovementParameters.new(
 		camera,

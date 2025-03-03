@@ -4,17 +4,13 @@
 [ext_resource type="Script" path="res://scripts/Camera.gd" id="2_r6yi5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lf2ej"]
+height = 2.23227
 
 [node name="player" type="CharacterBody3D"]
 script = ExtResource("1_syqdp")
-grounded_movement_speed = null
-coyote_time = null
-jump_velocity = null
-airborne_movement_speed = null
-extra_jumps = null
-fall_velocity = null
 
 [node name="player_collider" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.74409, 0, 0, 0, 0.74409, 0, 0, 0, 0.74409, 0, -0.378574, 0)
 shape = SubResource("CapsuleShape3D_lf2ej")
 
 [node name="first_person_camera" type="Camera3D" parent="."]

@@ -1,0 +1,84 @@
+[gd_scene load_steps=6 format=3 uid="uid://l6w78bgb0o7l"]
+
+[ext_resource type="Script" path="res://scripts/TransitionHallway.gd" id="1_rlco7"]
+[ext_resource type="PackedScene" uid="uid://blc1vv6wtvscp" path="res://scenes/standard_door.tscn" id="2_1eg5a"]
+[ext_resource type="Texture2D" uid="uid://bagnevo36mvlc" path="res://assets/textures/tile_modern_white.png" id="2_8qhmm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d534r"]
+albedo_texture = ExtResource("2_8qhmm")
+uv1_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a1jyv"]
+size = Vector3(2.27545, 16.1091, 0.339844)
+
+[node name="TransitionHallway" type="Node3D"]
+script = ExtResource("1_rlco7")
+
+[node name="door_exit" parent="." instance=ExtResource("2_1eg5a")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.446981, -0.404932, -3.94177)
+
+[node name="door_enter" parent="." instance=ExtResource("2_1eg5a")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.48387, -0.413392, 3.95136)
+
+[node name="walls" type="CSGCombiner3D" parent="."]
+material_override = SubResource("StandardMaterial3D_d534r")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="walls"]
+transform = Transform3D(1, 0, 0, 0, 3.593, 0, 0, 0, 1, -0.913818, 7.00667, 0.00543213)
+size = Vector3(0.121582, 4.15427, 7.93762)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="walls"]
+transform = Transform3D(1, 0, 0, 0, 3.593, 0, 0, 0, 1, 0.910461, 7.01122, 0.00543213)
+size = Vector3(0.121582, 4.1568, 7.93762)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="walls"]
+transform = Transform3D(-4.37114e-08, 1.57055e-07, 1, -4.37114e-08, 3.593, -4.37114e-08, -1, -1.57055e-07, -4.37114e-08, -0.00102686, 7.01856, 3.93779)
+size = Vector3(0.0725098, 4.16089, 1.95212)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="walls/CSGBox3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, -9.89787e-13, 7.11253e-12, 6.86509e-15, 1, -0.0593076, -1.79471, -0.0182797)
+operation = 2
+size = Vector3(0.315063, 0.515076, 0.917476)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="walls"]
+transform = Transform3D(-4.37114e-08, 1.57055e-07, 1, -4.37114e-08, 3.593, -4.37114e-08, -1, -1.57055e-07, -4.37114e-08, -0.00102686, 7.00612, -3.93357)
+size = Vector3(0.0856934, 4.15396, 1.95212)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="walls/CSGBox3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, -8.97417e-13, 6.45173e-12, 6.86509e-15, 1, 0.0598762, -1.80787, 0.0206401)
+operation = 2
+size = Vector3(0.315063, 0.553955, 0.91087)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000488281, 14.4326, -0.00567627)
+size = Vector3(1.9502, 0.12207, 7.95056)
+
+[node name="floor" type="CSGBox3D" parent="."]
+transform = Transform3D(2.03658, 0, 0, 0, 1, 0, 0, 0, 4.4352, 0.005, -0.422, 0.004)
+use_collision = true
+size = Vector3(0.968575, 0.0917969, 1.79651)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 14.0823, 0)
+spot_range = 40.0
+spot_attenuation = -0.1
+spot_angle = 18.64
+
+[node name="scene_load_trigger" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.08044)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="scene_load_trigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0411072, 7.55457, -1.56097)
+shape = SubResource("BoxShape3D_a1jyv")
+
+[node name="scene_switch_trigger" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.01212)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="scene_switch_trigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0411072, 7.55457, -1.56097)
+shape = SubResource("BoxShape3D_a1jyv")
+
+[connection signal="body_entered" from="scene_load_trigger" to="." method="_on_scene_load_triggered"]
+[connection signal="body_entered" from="scene_switch_trigger" to="." method="_on_scene_switch_trigger"]
+[connection signal="body_entered" from="scene_switch_trigger" to="." method="_on_scene_load_triggered"]

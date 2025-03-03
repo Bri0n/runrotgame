@@ -1,10 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dn8hadwtayo2g"]
+[gd_scene load_steps=7 format=3 uid="uid://dn8hadwtayo2g"]
 
+[ext_resource type="PackedScene" uid="uid://cukwwoh4efd66" path="res://scenes/starting_area.tscn" id="1_73xcv"]
+[ext_resource type="Script" path="res://scripts/GameStarter.gd" id="1_irbja"]
 [ext_resource type="PackedScene" uid="uid://c334msi5eywjn" path="res://scenes/player.tscn" id="1_mgspa"]
-[ext_resource type="PackedScene" uid="uid://c8cq6vatu3s3w" path="res://scenes/zona_vertical_01.tscn" id="1_ps05p"]
-[ext_resource type="PackedScene" uid="uid://mq3toad3d1cf" path="res://scenes/kill_zone.tscn" id="3_1eh22"]
-[ext_resource type="Texture2D" uid="uid://bxqh7tflj4f7y" path="res://assets/textures/metal_diamondplate_04.jpg" id="5_n1d4b"]
-[ext_resource type="Texture2D" uid="uid://dkkwbeikonii8" path="res://assets/textures/metal_panel_grey.png" id="6_phuti"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j6pp0"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -20,24 +18,8 @@ sky = SubResource("Sky_76sgc")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_mh36j"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gk2fe"]
-albedo_texture = ExtResource("5_n1d4b")
-uv1_scale = Vector3(10, 10, 10)
-uv1_triplanar = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ug7pf"]
-albedo_texture = ExtResource("6_phuti")
-uv1_scale = Vector3(5, 5, 5)
-uv1_triplanar = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vup34"]
-albedo_texture = ExtResource("5_n1d4b")
-uv1_scale = Vector3(10, 10, 10)
-uv1_triplanar = true
-
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_irbja")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_xkdmc")
@@ -46,50 +28,11 @@ environment = SubResource("Environment_xkdmc")
 transform = Transform3D(-0.993572, -0.0879752, 0.0712409, 0, 0.62932, 0.777146, -0.113203, 0.77215, -0.625275, 0, 8.89113, 0)
 shadow_enabled = true
 
-[node name="starting_area" type="Node" parent="."]
+[node name="current_level" type="Node" parent="."]
 
-[node name="floor" type="CSGMesh3D" parent="starting_area"]
-transform = Transform3D(5.8, 0, 0, 0, 5.8, 0, 0, 0, 5.8, 0.9, -0.3, 0)
-use_collision = true
-mesh = SubResource("PlaneMesh_mh36j")
-material = SubResource("StandardMaterial3D_gk2fe")
+[node name="starting_area" parent="current_level" instance=ExtResource("1_73xcv")]
 
-[node name="walls" type="CSGCombiner3D" parent="starting_area"]
-transform = Transform3D(5.8, 0, 0, 0, 9.28969, 0, 0, 0, 5.8, 0.9, -0.131029, 0)
-material_override = SubResource("StandardMaterial3D_ug7pf")
-use_collision = true
-
-[node name="CSGBox3D" type="CSGBox3D" parent="starting_area/walls"]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.0286558, 0.178968, -0.981915)
-size = Vector3(5.10779, 1, 0.1)
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="starting_area/walls"]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.0274252, 0.178968, 1.00166)
-size = Vector3(5.09717, 1, 0.1)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="starting_area/walls"]
-transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, -1.02448, 0.178968, 0.0147152)
-size = Vector3(5.04736, 1, 0.1)
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="starting_area/walls"]
-transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0.976761, 0.178968, 0.0147152)
-size = Vector3(5.04736, 1, 0.1)
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="starting_area/walls/CSGBox3D4"]
-transform = Transform3D(1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, 0.158264, -0.152893, 0)
-operation = 2
-size = Vector3(0.605591, 0.694214, 0.1)
-
-[node name="ceiling" type="CSGBox3D" parent="starting_area"]
-transform = Transform3D(9.86708, 0, 0, 0, 1, 0, 0, 0, 11.145, 0.746956, 3.33828, 0.0452356)
-size = Vector3(1.18758, 0.1, 1.03851)
-material = SubResource("StandardMaterial3D_vup34")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="starting_area"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 3, 0)
-
-[node name="Killzone" parent="." instance=ExtResource("3_1eh22")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+[node name="next_level" type="Node" parent="."]
 
 [node name="player" parent="." instance=ExtResource("1_mgspa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.849772, 0)
@@ -99,5 +42,4 @@ jump_velocity = 6.0
 airborne_movement_speed = 250.0
 fall_velocity = 1.5
 
-[node name="level_1" parent="." instance=ExtResource("1_ps05p")]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 10.1222, 0, -0.0295286)
+[editable path="current_level/starting_area"]

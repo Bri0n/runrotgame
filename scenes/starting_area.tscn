@@ -1,17 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cukwwoh4efd66"]
+[gd_scene load_steps=8 format=3 uid="uid://cukwwoh4efd66"]
 
 [ext_resource type="Texture2D" uid="uid://bxqh7tflj4f7y" path="res://assets/textures/metal_diamondplate_04.jpg" id="1_f07fa"]
 [ext_resource type="Texture2D" uid="uid://dkkwbeikonii8" path="res://assets/textures/metal_panel_grey.png" id="2_hva11"]
 [ext_resource type="PackedScene" uid="uid://mq3toad3d1cf" path="res://scenes/kill_zone.tscn" id="3_7vpgr"]
 [ext_resource type="PackedScene" uid="uid://l6w78bgb0o7l" path="res://scenes/transition_hallway.tscn" id="4_dx0k5"]
 [ext_resource type="PackedScene" uid="uid://c8cq6vatu3s3w" path="res://scenes/zona_vertical_01.tscn" id="5_1w6qi"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_mh36j"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gk2fe"]
-albedo_texture = ExtResource("1_f07fa")
-uv1_scale = Vector3(10, 10, 10)
-uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ug7pf"]
 albedo_texture = ExtResource("2_hva11")
@@ -24,12 +17,6 @@ uv1_scale = Vector3(10, 10, 10)
 uv1_triplanar = true
 
 [node name="starting_area" type="Node"]
-
-[node name="floor" type="CSGMesh3D" parent="."]
-transform = Transform3D(5.8, 0, 0, 0, 5.8, 0, 0, 0, 5.8, 0.9, -0.3, 0)
-use_collision = true
-mesh = SubResource("PlaneMesh_mh36j")
-material = SubResource("StandardMaterial3D_gk2fe")
 
 [node name="walls" type="CSGCombiner3D" parent="."]
 transform = Transform3D(5.8, 0, 0, 0, 9.28969, 0, 0, 0, 5.8, 0.9, -0.131029, 0)
@@ -59,6 +46,13 @@ size = Vector3(5.04736, 1, 0.1)
 
 [node name="ceiling" type="CSGBox3D" parent="."]
 transform = Transform3D(9.86708, 0, 0, 0, 1, 0, 0, 0, 11.145, 0.746956, 3.33828, 0.0452356)
+use_collision = true
+size = Vector3(1.18758, 0.1, 1.03851)
+material = SubResource("StandardMaterial3D_vup34")
+
+[node name="floor" type="CSGBox3D" parent="."]
+transform = Transform3D(9.86708, 0, 0, 0, 1, 0, 0, 0, 11.145, 0.746956, -0.368072, 0.0452356)
+use_collision = true
 size = Vector3(1.18758, 0.1, 1.03851)
 material = SubResource("StandardMaterial3D_vup34")
 

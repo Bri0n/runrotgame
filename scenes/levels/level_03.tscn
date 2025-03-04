@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://b35237p485wmw"]
+[gd_scene load_steps=36 format=3 uid="uid://b35237p485wmw"]
 
 [ext_resource type="PackedScene" uid="uid://l6w78bgb0o7l" path="res://scenes/transition_hallway.tscn" id="1_0mpxa"]
 [ext_resource type="Texture2D" uid="uid://2v0tvtg2gys4" path="res://assets/textures/skyboxes/meadow_4k.exr" id="1_jgt0v"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://dyiq70jmn7h2k" path="res://assets/textures/water_waves.png" id="4_f7d2q"]
 [ext_resource type="Texture2D" uid="uid://w081yqe6xyk7" path="res://assets/textures/wood_pole_01.jpg" id="5_bry8f"]
 [ext_resource type="PackedScene" uid="uid://mq3toad3d1cf" path="res://scenes/kill_zone.tscn" id="6_jg7km"]
-[ext_resource type="PackedScene" uid="uid://c334msi5eywjn" path="res://scenes/player.tscn" id="7_8h1xh"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_hvqp8"]
 panorama = ExtResource("1_jgt0v")
@@ -492,14 +491,6 @@ size = Vector3(0.163836, 12.2124, 28.8534)
 
 [node name="Killzone" parent="." instance=ExtResource("6_jg7km")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
-
-[node name="player" parent="." instance=ExtResource("7_8h1xh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.849772, -2)
-grounded_movement_speed = 275.0
-coyote_time = 0.2
-jump_velocity = 6.0
-airborne_movement_speed = 250.0
-fall_velocity = 1.5
 
 [node name="moving_platforms" type="Node" parent="."]
 

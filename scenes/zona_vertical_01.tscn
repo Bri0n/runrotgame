@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c8cq6vatu3s3w"]
+[gd_scene load_steps=13 format=3 uid="uid://c8cq6vatu3s3w"]
 
 [ext_resource type="Texture2D" uid="uid://bhwfieapy6665" path="res://assets/textures/concrete_05.png" id="1_xf7ec"]
 [ext_resource type="Texture2D" uid="uid://bvsqpxfswtiae" path="res://assets/textures/concrete_15.jpg" id="2_omnrn"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bmitawbvtqfri" path="res://scenes/chips_pickup.tscn" id="4_4sd3v"]
 [ext_resource type="PackedScene" uid="uid://l6w78bgb0o7l" path="res://scenes/transition_hallway.tscn" id="5_n8h0x"]
 [ext_resource type="PackedScene" uid="uid://mq3toad3d1cf" path="res://scenes/kill_zone.tscn" id="6_2a00g"]
-[ext_resource type="PackedScene" uid="uid://dwo6ho8khh2gg" path="res://scenes/level_02.tscn" id="7_fu88m"]
+[ext_resource type="PackedScene" uid="uid://b35237p485wmw" path="res://scenes/levels/level_03.tscn" id="7_kirqh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ov7n"]
 albedo_texture = ExtResource("1_xf7ec")
@@ -18,13 +18,9 @@ uv1_triplanar = true
 albedo_texture = ExtResource("2_omnrn")
 uv1_triplanar = true
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_owb7v"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_beuub"]
-albedo_color = Color(0.517116, 0.289844, 0.109572, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kirqh"]
+albedo_color = Color(0.841554, 0.43792, 0.226588, 1)
 albedo_texture = ExtResource("3_pb51d")
-emission_enabled = true
-emission_energy_multiplier = 1.51
 uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3f38w"]
@@ -64,7 +60,7 @@ use_collision = true
 mesh = SubResource("BoxMesh_mq1ou")
 
 [node name="CSGMesh3D4" type="CSGMesh3D" parent="platforms"]
-transform = Transform3D(3.05865, 0, 0, 0, 0.831888, 0, 0, 0, 3.05865, -4.55296, 4.0387, -10.5562)
+transform = Transform3D(3.05865, 0, 0, 0, 0.831888, 0, 0, 0, 3.05865, -4.55296, 3.99473, -10.5562)
 use_collision = true
 mesh = SubResource("BoxMesh_mq1ou")
 
@@ -79,7 +75,7 @@ use_collision = true
 mesh = SubResource("BoxMesh_mq1ou")
 
 [node name="CSGMesh3D12" type="CSGMesh3D" parent="platforms"]
-transform = Transform3D(4.4108, 0, 0, 0, 2.61905, 0, 0, 0, 7.33574, -4.49695, -0.187181, -24.8158)
+transform = Transform3D(4.4108, 0, 0, 0, 2.61905, 0, 0, 0, 7.33574, -4.48626, -0.1986, -24.8123)
 use_collision = true
 mesh = SubResource("BoxMesh_mq1ou")
 
@@ -306,13 +302,12 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.9506
 size = Vector3(0.23877, 20.0411, 1.95984)
 
 [node name="lava" type="CSGCombiner3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.93423, 0, -6.89246)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.93562, -5.17772, -6.89384)
+material_override = SubResource("StandardMaterial3D_kirqh")
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="lava"]
-transform = Transform3D(6.6566, 0, 0, 0, 3.21476, 0, 0, 0, 21.3178, -1.7033, -5, -20.8862)
-use_collision = true
-mesh = SubResource("PlaneMesh_owb7v")
-material = SubResource("StandardMaterial3D_beuub")
+[node name="CSGBox3D" type="CSGBox3D" parent="lava"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.90619, -0.427002, -19.5489)
+size = Vector3(11.5892, 0.145996, 33.2159)
 
 [node name="ceiling" type="CSGCombiner3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.93423, 0, -6.89246)
@@ -390,4 +385,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
 
 [node name="exit_transition_hallway" parent="." instance=ExtResource("5_n8h0x")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.6661, 10.3787, -3.88595)
-next_scene = ExtResource("7_fu88m")
+next_scene = ExtResource("7_kirqh")

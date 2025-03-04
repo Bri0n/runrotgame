@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://b35237p485wmw"]
+[gd_scene load_steps=35 format=3 uid="uid://b35237p485wmw"]
 
 [ext_resource type="PackedScene" uid="uid://l6w78bgb0o7l" path="res://scenes/transition_hallway_exit.tscn" id="1_0mpxa"]
 [ext_resource type="Texture2D" uid="uid://baglxbqfb3hka" path="res://assets/textures/skyboxes/Epic_BlueSunset_EquiRect_flat.png" id="1_jgt0v"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dyiq70jmn7h2k" path="res://assets/textures/water_waves.png" id="4_f7d2q"]
 [ext_resource type="Texture2D" uid="uid://w081yqe6xyk7" path="res://assets/textures/wood_pole_01.jpg" id="5_bry8f"]
 [ext_resource type="PackedScene" uid="uid://mq3toad3d1cf" path="res://scenes/kill_zone.tscn" id="6_jg7km"]
+[ext_resource type="PackedScene" uid="uid://bmitawbvtqfri" path="res://scenes/chips_pickup.tscn" id="9_hvqp8"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_jgt0v"]
 panorama = ExtResource("1_jgt0v")
@@ -46,44 +47,6 @@ uv1_triplanar = true
 material = SubResource("StandardMaterial3D_m41b0")
 size = Vector3(1, 0.46, 1)
 
-[sub_resource type="Animation" id="Animation_t5irh"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.0666667),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.2, -0.8, -11.9291)]
-}
-
-[sub_resource type="Animation" id="Animation_wxasi"]
-resource_name = "moving_platform_01"
-length = 3.0
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.466667, 2.46667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.771608, -1.40887, -12.5738), Vector3(-0.0479383, -0.88614, -16.4731)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_hlxy7"]
-_data = {
-&"RESET": SubResource("Animation_t5irh"),
-&"moving_platform_01": SubResource("Animation_wxasi")
-}
-
 [sub_resource type="Animation" id="Animation_hvqp8"]
 length = 0.001
 tracks/0/type = "value"
@@ -101,7 +64,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_jgt0v"]
 resource_name = "moving_platform_02"
-length = 2.0
+length = 1.5
 loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -110,7 +73,7 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.5, 1.5),
+"times": PackedFloat32Array(0.333333, 1.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(-1.15631, -3.10009, -32.0586), Vector3(-1.15631, -0.80527, -32.0586)]
@@ -148,10 +111,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.5, 1.46667, 3.45),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0.266667, 3.73333),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(-24.718, 2.61357, -37.2812), Vector3(-24.718, 2.61357, -39.5594), Vector3(-32.0319, 2.61357, -39.5594)]
+"values": [Vector3(-21.578, 2.614, -39.559), Vector3(-32.0319, 2.61357, -39.5594)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dkd5g"]
@@ -321,6 +284,10 @@ size = Vector3(1.36865, 9, 1.41113)
 transform = Transform3D(0.56, 0, 0, 0, 0.56, 0, 0, 0, 0.56, -0.434, -5.28916, -22.0831)
 size = Vector3(1.36865, 3.91016, 1.41113)
 
+[node name="CSGBox3D12" type="CSGBox3D" parent="brick"]
+transform = Transform3D(0.56, 0, 0, 0, 0.56, 0, 0, 0, 0.56, -0.434, -5.28916, -17.1585)
+size = Vector3(1.36865, 3.91016, 1.41113)
+
 [node name="CSGBox3D6" type="CSGBox3D" parent="brick"]
 transform = Transform3D(0.56, 0, 0, 0, 0.56, 0, 0, 0, 0.56, -1.02351, -5.55524, -26.419)
 size = Vector3(1.36865, 2.95984, 1.41113)
@@ -373,6 +340,34 @@ size = Vector3(1.48522, 1.62379, 4.09739)
 transform = Transform3D(0.56, 0, 0, 0, 0.56, 0, 0, 0, 0.56, -14.6387, 3.42626, -37.4879)
 size = Vector3(0.484119, 0.634161, 3.47568)
 
+[node name="CSGBox3D31" type="CSGBox3D" parent="brick"]
+transform = Transform3D(0.56, 0, 0, 0, 0.56, 0, 0, 0, 0.56, -14.169, 3.42626, -38.307)
+size = Vector3(2.16149, 0.634161, 0.550317)
+
+[node name="CSGBox3D23" type="CSGBox3D" parent="brick"]
+transform = Transform3D(0.56, 0, 0, 0, 0.56, 0, 0, 0, 0.56, -11.2895, 4.56934, -42.665)
+size = Vector3(0.484119, 0.634161, 1.88481)
+
+[node name="CSGBox3D26" type="CSGBox3D" parent="brick"]
+transform = Transform3D(0.56, 0, 0, 0, 0.56, 0, 0, 0, 0.56, -9.13412, 4.56934, -42.2562)
+size = Vector3(8.182, 0.634161, 0.42495)
+
+[node name="CSGBox3D27" type="CSGBox3D" parent="brick"]
+transform = Transform3D(0.559951, 0, 0.00741813, 0, 0.56, 0, -0.00741813, 0, 0.559951, -6.97021, 4.56934, -41.4741)
+size = Vector3(0.547727, 0.634161, 3.11437)
+
+[node name="CSGBox3D28" type="CSGBox3D" parent="brick"]
+transform = Transform3D(0.56, 0, 0, 0, 0.56, 0, 0, 0, 0.56, -5.91768, 4.56934, -40.726)
+size = Vector3(4.12472, 0.634161, 0.433325)
+
+[node name="CSGBox3D29" type="CSGBox3D" parent="brick"]
+transform = Transform3D(0.56, 0, 0, 0, 0.56, 0, 0, 0, 0.56, -1.78295, 4.56934, -40.7872)
+size = Vector3(3.01695, 0.634161, 0.433325)
+
+[node name="CSGBox3D30" type="CSGBox3D" parent="brick"]
+transform = Transform3D(0.56, 0, 0, 0, 0.56, 0, 0, 0, 0.56, -1.06763, 4.56934, -42.0482)
+size = Vector3(0.462249, 0.634161, 4.33904)
+
 [node name="CSGBox3D20" type="CSGBox3D" parent="brick"]
 transform = Transform3D(0.56, 0, 0, 0, 0.56, 0, 0, 0, 0.56, -14.7414, 2.54916, -42.506)
 size = Vector3(1.27632, 1.62379, 2.37991)
@@ -390,8 +385,28 @@ transform = Transform3D(0.56, 0, 0, 0, 0.56, 0, 0, 0, 0.56, -20.1486, 2.37331, -
 size = Vector3(7.23314, 1.62379, 1.41348)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="brick"]
-transform = Transform3D(0.3, 0, 0, 0, -6.03217e-08, -0.3, 0, 1.38, -1.31134e-08, 0, -0.853931, -18.3467)
-height = 0.300256
+transform = Transform3D(0.3, 0, 0, 0, -6.03217e-08, -0.3, 0, 1.38, -1.31134e-08, 0, -0.853931, -16.8604)
+height = 2.45433
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="brick"]
+transform = Transform3D(-1.31134e-08, -1.38, 1.31134e-08, 0, -6.03217e-08, -0.3, 0.3, -6.03217e-08, 1.63902e-15, -0.0130305, -0.853931, -15.2877)
+height = 1.16867
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="brick"]
+transform = Transform3D(0.3, 7.10543e-15, 0, -4.65882e-23, -6.03217e-08, -0.3, -8.88178e-16, 1.38, -1.31134e-08, 0.699854, -0.853931, -15.0485)
+height = 0.477767
+
+[node name="CSGCylinder3D10" type="CSGCylinder3D" parent="brick"]
+transform = Transform3D(0.3, 7.10543e-15, 0, -4.65882e-23, -6.03217e-08, -0.3, -8.88178e-16, 1.38, -1.31134e-08, 1.37253, -0.853931, -13.3341)
+height = 0.477767
+
+[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="brick"]
+transform = Transform3D(0.259808, 0.69, -6.5567e-09, -4.65882e-23, -6.03217e-08, -0.3, -0.15, 1.19511, -1.13565e-08, 1.02647, -0.853931, -14.1855)
+height = 1.02258
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="brick"]
+transform = Transform3D(-0.3, 1.20643e-07, -3.27804e-15, -4.65882e-23, -6.03217e-08, -0.3, -2.62268e-08, -1.38, 1.31134e-08, -0.727665, -0.843947, -14.7914)
+height = 0.850034
 
 [node name="CSGCylinder3D4" type="CSGCylinder3D" parent="brick"]
 transform = Transform3D(4.26525, 0, 0, 0, -8.57623e-07, -4.26525, 0, 19.6201, -1.8644e-07, -31.9893, -1.34628, -77.7607)
@@ -495,22 +510,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
 
 [node name="moving_platforms" type="Node" parent="."]
 
-[node name="moving_platform_01" type="AnimatableBody3D" parent="moving_platforms"]
-transform = Transform3D(0.868116, 0, 0, 0, 0.868116, 0, 0, 0, 0.868116, 0.2, -0.8, -11.9291)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="moving_platforms/moving_platform_01"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19209e-07, 0)
-shape = SubResource("BoxShape3D_evksn")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="moving_platforms/moving_platform_01"]
-mesh = SubResource("BoxMesh_srnsr")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="moving_platforms/moving_platform_01"]
-libraries = {
-&"": SubResource("AnimationLibrary_hlxy7")
-}
-autoplay = "moving_platform_01"
-
 [node name="moving_platform_02" type="AnimatableBody3D" parent="moving_platforms"]
 transform = Transform3D(0.726743, 0, 0, 0, 0.726743, 0, 0, 0, 0.726743, -1.15631, -3.10009, -26.3933)
 
@@ -590,3 +589,20 @@ libraries = {
 &"": SubResource("AnimationLibrary_ghs8o")
 }
 autoplay = "moving_platform_06"
+
+[node name="pickups" type="Node" parent="."]
+
+[node name="chips_pickup" parent="pickups" instance=ExtResource("9_hvqp8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.36698, -0.287711, -13.2149)
+
+[node name="chips_pickup2" parent="pickups" instance=ExtResource("9_hvqp8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.414332, -3.72589, -17.0944)
+
+[node name="chips_pickup3" parent="pickups" instance=ExtResource("9_hvqp8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3285, 4.84805, -39.7497)
+
+[node name="chips_pickup4" parent="pickups" instance=ExtResource("9_hvqp8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.07938, 5.11035, -42.6017)
+
+[node name="chips_pickup5" parent="pickups" instance=ExtResource("9_hvqp8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.0564, 1.31109, -59.042)

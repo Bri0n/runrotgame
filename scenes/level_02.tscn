@@ -1,29 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwo6ho8khh2gg"]
+[gd_scene load_steps=3 format=3 uid="uid://dwo6ho8khh2gg"]
 
 [ext_resource type="PackedScene" uid="uid://l6w78bgb0o7l" path="res://scenes/transition_hallway_exit.tscn" id="1_mf7f7"]
-[ext_resource type="Texture2D" uid="uid://f81fxa1hi2jw" path="res://assets/textures/brick_red_04.jpg" id="2_nay26"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_41htr"]
-albedo_texture = ExtResource("2_nay26")
-uv1_triplanar = true
+[ext_resource type="PackedScene" uid="uid://md5vxxjhpavw" path="res://scenes/transition_hallway_enter.tscn" id="1_pmlnk"]
 
 [node name="Level02" type="Node3D"]
 
-[node name="entry_transition_hallway" parent="." instance=ExtResource("1_mf7f7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.9)
+[node name="entry_transition_hallway" parent="." instance=ExtResource("1_pmlnk")]
 
 [node name="exit_transition_hallway" parent="." instance=ExtResource("1_mf7f7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -27.3)
-
-[node name="plataformas" type="CSGCombiner3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.7)
-material_override = SubResource("StandardMaterial3D_41htr")
-use_collision = true
-
-[node name="CSGBox3D" type="CSGBox3D" parent="plataformas"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.488892, -5.55204)
-size = Vector3(1, 0.140381, 1)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="plataformas"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.488892, -8.05204)
-size = Vector3(1, 0.140381, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -38.7)

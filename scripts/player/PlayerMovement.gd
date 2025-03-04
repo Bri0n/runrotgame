@@ -9,11 +9,14 @@ var parameters : PlayerMovementParameters
 @export_group("Grounded")
 @export var grounded_movement_speed := 350.0
 @export var sprint_movement_speed := 500.0
+@export var max_grounded_movement_speed := 5.0
+@export var max_sprinting_speed := 8.0
 @export var coyote_time := 0.5
 @export var jump_velocity := 7.00
 
 @export_group("Airborne")
 @export var airborne_movement_speed := 200.0
+@export var minimum_airborne_movement_speed := 3.0
 @export var extra_jumps := 1
 @export var fall_velocity := 1.00
 
@@ -25,6 +28,8 @@ func _ready() -> void:
 		camera,
 		grounded_movement_speed,
 		sprint_movement_speed,
+		max_grounded_movement_speed,
+		max_sprinting_speed,
 		coyote_time,
 		jump_velocity,
 		fall_velocity,

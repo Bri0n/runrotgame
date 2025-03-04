@@ -5,7 +5,10 @@ class_name PlayerStatusGrounded
 const PlayerMovementCommands = preload("res://scripts/GlobalConstants.gd").PlayerMovementCommands
 var _camera: Node3D
 var _movement_speed : float
+var _stopping_speed : float = 25.0 # TODO: Pasarlo a parameters
 var _sprint_speed : float
+var _max_grounded_speed : float
+var _max_sprint_speed : float
 var _movement_direction : Vector3 = Vector3.ZERO
 var _player : PlayerMovement
 var _parameters
@@ -22,6 +25,8 @@ func _init(player : PlayerMovement, parameters : PlayerMovementParameters):
 	_player = player
 	_movement_speed = parameters.grounded_movement_speed
 	_sprint_speed = parameters.sprint_movement_speed
+	_max_grounded_speed = parameters.max_grounded_movement_speed
+	_max_sprint_speed = parameters.max_sprinting_speed
 	_coyote_time = parameters.coyote_time
 	_jump_velocity = parameters.jump_velocity
 	_parameters = parameters
@@ -54,12 +59,8 @@ func _read_movement_input():
 	camera_right.y = 0
 	camera_right = camera_right.normalized()
 	
-	if input_direction: 
-		_movement_direction = (camera_right * input_direction.x + camera_forward * input_direction.y).normalized()
-		
-	else:
-		_movement_direction = Vector3.ZERO
-		
+	_movement_direction = (camera_right * input_direction.x + camera_forward * input_direction.y).normalized()
+
 func process_input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):
 		_handle_jump()
@@ -73,23 +74,21 @@ func _handle_jump() -> void:
 
 func _move(delta : float) -> void:
 	if _movement_direction:
+		var current_movement_speed : float
+		var current_maximum_speed : float
 		if Input.is_action_pressed("sprint"):
-			_player.velocity.x += _movement_direction.x * _sprint_speed * delta
-			_player.velocity.z += _movement_direction.z * _sprint_speed * delta
-			_player.velocity.x = clamp(_player.velocity.x, -8, 8)
-			_player.velocity.z = clamp(_player.velocity.z, -8, 8)
+			current_movement_speed = _sprint_speed
+			current_maximum_speed = _max_sprint_speed
 		else:
-			print("dawd" + str(_movement_direction))
-			var _velocity_x = _player.velocity.x + (_movement_direction.x * _movement_speed * delta)
-			var _velocity_z = _player.velocity.z + (_movement_direction.z * _movement_speed * delta)
-			print("Velocidad ground en var en x" + str(_velocity_x))
-			print("Velocidad ground en var en z" + str(_velocity_z))	
-			_player.velocity.x = clamp(_velocity_x, -5.0, 5.0)
-			_player.velocity.z = clamp(_velocity_z, -5.0, 5.0)
-			print("Velocidad clampeada en x" + str(_player.velocity.x))
-			print("Velocidad clampeada en z" + str(_player.velocity.z))	
+			current_movement_speed = _movement_speed
+			current_maximum_speed = _max_grounded_speed
+		var velocity_change_x = _movement_direction.x * _movement_speed * delta
+		var velocity_change_z = _movement_direction.z * _movement_speed * delta
+		var max_velocity = _movement_direction * current_maximum_speed
 		
-	
+		_player.velocity.x = clamp(_player.velocity.x + velocity_change_x, -max_velocity.x, max_velocity.x)
+		_player.velocity.z = clamp(_player.velocity.z + velocity_change_z, -max_velocity.z, max_velocity.z)
+
 	else:
-		_player.velocity.x = move_toward(_player.velocity.x, 0, _movement_speed * delta * 2)
-		_player.velocity.z = move_toward(_player.velocity.z, 0, _movement_speed * delta * 2)
+		_player.velocity.x = move_toward(_player.velocity.x, 0, _stopping_speed * delta)
+		_player.velocity.z = move_toward(_player.velocity.z, 0, _stopping_speed * delta)

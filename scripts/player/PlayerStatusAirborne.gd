@@ -12,6 +12,7 @@ var _parameters : PlayerMovementParameters
 # Movement
 var _movement_speed : float
 var _movement_direction : Vector3 = Vector3.ZERO
+var _stopping_speed : float = 18.0 # TODO: Pasarlo a parameters
 
 # Jump
 var _jump_velocity : float
@@ -19,7 +20,7 @@ var _fall_velocity : float
 
 # Double jump
 var _extra_jumps : int
-var _initial_velocity: Vector3
+var _max_velocity : float
 
 func _init(
 	player : PlayerMovement,
@@ -47,9 +48,11 @@ func _init(
 
 func enter_state():
 	print("Entered Airborne State.")
-	_initial_velocity = _player.velocity
-	# If the player enters the state by walking off a ledge,
-	# it enters the state without vertical velocity
+	var max_horizontal_direction = max(abs(_player.velocity.x),abs(_player.velocity.z))
+	if max_horizontal_direction > _parameters.max_grounded_movement_speed:
+		_max_velocity = _parameters.max_sprinting_speed
+	else:
+		_max_velocity = _parameters.max_grounded_movement_speed
 
 func exit_state():
 	pass
@@ -83,14 +86,15 @@ func _read_movement_input():
 
 func _move(delta : float) -> void:
 	if _movement_direction:
-		_player.velocity.x += _movement_direction.x * _movement_speed * delta
-		_player.velocity.z += _movement_direction.z * _movement_speed * delta
-		_player.velocity.x = clamp(_player.velocity.x, -(_initial_velocity.x), _initial_velocity.x)
-		_player.velocity.z = clamp(_player.velocity.z, -(_initial_velocity.z), _initial_velocity.z)
+		var velocity_change = _movement_direction * _movement_speed * delta
+		var desired_velocity = _player.velocity + velocity_change
+		var max_velocity = _movement_direction * _max_velocity
+		_player.velocity.x = clamp(desired_velocity.x, -max_velocity.x, max_velocity.x)
+		_player.velocity.z = clamp(desired_velocity.z, -max_velocity.z, max_velocity.z)
 
 	else:
-		_player.velocity.x = move_toward(_player.velocity.x, 0, _movement_speed * delta)
-		_player.velocity.z = move_toward(_player.velocity.z, 0, _movement_speed * delta)
+		_player.velocity.x = move_toward(_player.velocity.x, 0, _stopping_speed * delta)
+		_player.velocity.z = move_toward(_player.velocity.z, 0, _stopping_speed * delta)
 			
 func _double_jump():
 	if _extra_jumps > 0:

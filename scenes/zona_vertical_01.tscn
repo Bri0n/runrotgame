@@ -255,9 +255,9 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.005
 size = Vector3(0.23877, 8.29739, 5.98547)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="walls/CSGBox3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.73433, -0.196396)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.13709, -0.223584)
 operation = 2
-size = Vector3(0.23877, 2.44611, 1.20486)
+size = Vector3(0.23877, 3.64058, 2.55109)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.95043, 3.65617, -0.0037539)

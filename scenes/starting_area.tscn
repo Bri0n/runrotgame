@@ -1,26 +1,52 @@
-[gd_scene load_steps=8 format=3 uid="uid://cukwwoh4efd66"]
+[gd_scene load_steps=10 format=3 uid="uid://cukwwoh4efd66"]
 
-[ext_resource type="Texture2D" uid="uid://bxqh7tflj4f7y" path="res://assets/textures/metal_diamondplate_04.jpg" id="1_f07fa"]
-[ext_resource type="Texture2D" uid="uid://dkkwbeikonii8" path="res://assets/textures/metal_panel_grey.png" id="2_hva11"]
+[ext_resource type="Shader" uid="uid://cnpt7gv8wgcay" path="res://shaders/ursc/spatial/basic_opaque.gdshader" id="1_mumia"]
 [ext_resource type="PackedScene" uid="uid://mq3toad3d1cf" path="res://scenes/kill_zone.tscn" id="3_7vpgr"]
-[ext_resource type="PackedScene" uid="uid://l6w78bgb0o7l" path="res://scenes/transition_hallway.tscn" id="4_dx0k5"]
-[ext_resource type="PackedScene" uid="uid://c8cq6vatu3s3w" path="res://scenes/zona_vertical_01.tscn" id="5_1w6qi"]
+[ext_resource type="Shader" uid="uid://dorm5wwxqmgl5" path="res://shaders/ursc/spatial/standard_opaque.gdshader" id="3_opx81"]
+[ext_resource type="PackedScene" uid="uid://l6w78bgb0o7l" path="res://scenes/transition_hallway_exit.tscn" id="4_dx0k5"]
+[ext_resource type="PackedScene" uid="uid://c8cq6vatu3s3w" path="res://scenes/levels/zona_vertical_01.tscn" id="5_1w6qi"]
+[ext_resource type="Texture2D" uid="uid://biqlyq0tubvy" path="res://assets/textures/Tile_13-128x128.png" id="7_mumia"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ug7pf"]
-albedo_texture = ExtResource("2_hva11")
-uv1_scale = Vector3(5, 5, 5)
-uv1_triplanar = true
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q4by3"]
+render_priority = 0
+shader = ExtResource("1_mumia")
+shader_parameter/albedo_color = Color(0.981596, 0.987293, 0.996899, 1)
+shader_parameter/cull_distance_override = 0.0
+shader_parameter/convert_vertex_colors = false
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vup34"]
-albedo_texture = ExtResource("1_f07fa")
-uv1_scale = Vector3(10, 10, 10)
-uv1_triplanar = true
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kod28"]
+render_priority = 0
+shader = ExtResource("3_opx81")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("7_mumia")
+shader_parameter/albedo_texture_as_primary_color = true
+shader_parameter/mix_factor = 1.0
+shader_parameter/texture_lod_halve_distance_override = 0.0
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_scale = Vector2(6, 6)
+shader_parameter/uv_scroll_speed = Vector2(0, 0)
+shader_parameter/cull_distance_override = 0.0
+shader_parameter/convert_vertex_colors = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_opx81"]
+render_priority = 0
+shader = ExtResource("3_opx81")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("7_mumia")
+shader_parameter/albedo_texture_as_primary_color = true
+shader_parameter/mix_factor = 1.0
+shader_parameter/texture_lod_halve_distance_override = 0.0
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_scale = Vector2(6, 6)
+shader_parameter/uv_scroll_speed = Vector2(0, 0)
+shader_parameter/cull_distance_override = 0.0
+shader_parameter/convert_vertex_colors = false
 
 [node name="starting_area" type="Node"]
 
 [node name="walls" type="CSGCombiner3D" parent="."]
 transform = Transform3D(5.8, 0, 0, 0, 9.28969, 0, 0, 0, 5.8, 0.9, -0.131029, 0)
-material_override = SubResource("StandardMaterial3D_ug7pf")
+material_override = SubResource("ShaderMaterial_q4by3")
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="walls"]
@@ -48,13 +74,13 @@ size = Vector3(5.04736, 1, 0.1)
 transform = Transform3D(9.86708, 0, 0, 0, 1, 0, 0, 0, 11.145, 0.746956, 3.33828, 0.0452356)
 use_collision = true
 size = Vector3(1.18758, 0.1, 1.03851)
-material = SubResource("StandardMaterial3D_vup34")
+material = SubResource("ShaderMaterial_kod28")
 
 [node name="floor" type="CSGBox3D" parent="."]
-transform = Transform3D(9.86708, 0, 0, 0, 1, 0, 0, 0, 11.145, 0.746956, -0.368072, 0.0452356)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.784625, -0.368072, 0.102017)
 use_collision = true
-size = Vector3(1.18758, 0.1, 1.03851)
-material = SubResource("StandardMaterial3D_vup34")
+size = Vector3(11.9826, 0.1, 12.0879)
+material = SubResource("ShaderMaterial_opx81")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 3, 0)

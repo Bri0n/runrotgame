@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctuedge65vnm2"]
+
+[ext_resource type="Script" uid="uid://cbobyn7u1cwb8" path="res://scripts/audio_manager.gd" id="1_3asnw"]
+[ext_resource type="AudioStream" uid="uid://2trqx48xt366" path="res://audio/music/aerk-core-22-one-257976.mp3" id="2_m6ggh"]
+[ext_resource type="AudioStream" uid="uid://chpvewlngyhj4" path="res://audio/player/Footstep_Boot_Concrete-014.mp3" id="3_aoitu"]
+
+[node name="AudioManager" type="Node3D"]
+script = ExtResource("1_3asnw")
+
+[node name="MainTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_m6ggh")
+volume_db = -12.51
+autoplay = true
+
+[node name="Footstep1" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_aoitu")
+pitch_scale = 1.45

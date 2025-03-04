@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bmitawbvtqfri"]
 
-[ext_resource type="Script" path="res://scripts/Pickup.gd" id="1_icdc7"]
+[ext_resource type="Script" uid="uid://cpo7utujaqjnm" path="res://scripts/Pickup.gd" id="1_icdc7"]
 [ext_resource type="PackedScene" uid="uid://dvb0r6hp5u01w" path="res://assets/models/chips.glb" id="1_k2004"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ui0mr"]

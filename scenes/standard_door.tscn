@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://blc1vv6wtvscp"]
 
-[ext_resource type="Script" path="res://scripts/StandardDoor.gd" id="1_56rjx"]
+[ext_resource type="Script" uid="uid://di48njx6r6t6r" path="res://scripts/StandardDoor.gd" id="1_56rjx"]
 [ext_resource type="PackedScene" uid="uid://bhtexjbv1ucb1" path="res://assets/models/door_brown_a.glb" id="1_unvlk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y4nko"]

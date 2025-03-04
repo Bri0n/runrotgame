@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://l6w78bgb0o7l"]
 
-[ext_resource type="Script" path="res://scripts/TransitionHallway.gd" id="1_rlco7"]
+[ext_resource type="Script" uid="uid://di7ux8qlsb0v4" path="res://scripts/TransitionHallway.gd" id="1_rlco7"]
 [ext_resource type="PackedScene" uid="uid://blc1vv6wtvscp" path="res://scenes/standard_door.tscn" id="2_1eg5a"]
 [ext_resource type="Texture2D" uid="uid://bagnevo36mvlc" path="res://assets/textures/tile_modern_white.png" id="2_8qhmm"]
 

@@ -12,13 +12,14 @@ config_version=5
 
 config/name="Runrot"
 run/main_scene="res://scenes/main.tscn"
-config/features=PackedStringArray("4.3", "Mobile")
+config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GlobalConstants="*res://scripts/GlobalConstants.gd"
 GameManager="*res://scenes/GameManager.tscn"
+AudioManager="*res://scenes/audio_manager.tscn"
 
 [display]
 

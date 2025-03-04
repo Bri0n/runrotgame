@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://mq3toad3d1cf"]
 
-[ext_resource type="Script" path="res://scenes/kill_zone.gd" id="1_sjto6"]
+[ext_resource type="Script" uid="uid://coi78g705sc03" path="res://scenes/kill_zone.gd" id="1_sjto6"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_iyfr2"]
 

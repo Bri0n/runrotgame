@@ -2,7 +2,7 @@ extends Area3D
 
 func _on_body_entered(body: Node3D) -> void:
 	print("Player death")
-	call_deferred("_reload_scene")
+	call_deferred("_game_over")
 
-func _reload_scene():
-	get_tree().reload_current_scene()
+func _game_over():
+	GameManager.end_game()

@@ -7,9 +7,41 @@ var current_level_path : String = "res://scenes/main.tscn"
 var next_level_path : String
 var levels := []
 
+# Timer
+var counting_down : bool = false
+var remanining_time : float = 300.0
+var elapsed_time : float = 0.0
+
+# Pickups
+var pickups_count : int = 0
+var score : int = 0
+
 func _ready() -> void:
 	load_levels("res://scenes/levels/")
 	select_next_level()
+
+func _process(delta: float) -> void:
+	if counting_down:
+		remanining_time -= delta
+		elapsed_time += delta
+
+func start_game():
+	counting_down = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+func increase_remaining_time(increment_in_seconds : float):
+	remanining_time += increment_in_seconds
+
+func _on_timer_timeout():
+	end_game()
+
+func end_game():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+
+func process_pickup(points : int = 0):
+	pickups_count += 1
+	score += points
 
 func load_levels(folder_path: String):
 	var dir = DirAccess.open(folder_path)

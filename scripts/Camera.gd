@@ -5,7 +5,7 @@ extends Node3D
 @export var mouse_sensitivity := 0.005
 @export var gamepad_sensitivity := 0.02
 
-var mouse_captured : bool = false
+var mouse_captured : bool = true
 var pitch: float = deg_to_rad(initial_pitch)
 
 func _process(delta: float) -> void:

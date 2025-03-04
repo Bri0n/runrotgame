@@ -2,6 +2,8 @@ extends PlayerStatus
 
 class_name PlayerStatusGrounded
 
+@onready var audio_manager: Node3D = null
+
 const PlayerMovementCommands = preload("res://scripts/GlobalConstants.gd").PlayerMovementCommands
 var _camera: Node3D
 var _movement_speed : float
@@ -92,3 +94,5 @@ func _move(delta : float) -> void:
 	else:
 		_player.velocity.x = move_toward(_player.velocity.x, 0, _stopping_speed * delta)
 		_player.velocity.z = move_toward(_player.velocity.z, 0, _stopping_speed * delta)
+	
+	audio_manager.play_footstep_audio()

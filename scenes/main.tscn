@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dn8hadwtayo2g"]
+[gd_scene load_steps=10 format=3 uid="uid://dn8hadwtayo2g"]
 
-[ext_resource type="PackedScene" uid="uid://cukwwoh4efd66" path="res://scenes/starting_area.tscn" id="1_73xcv"]
+[ext_resource type="PackedScene" path="res://scenes/starting_area.tscn" id="1_73xcv"]
 [ext_resource type="Script" path="res://scripts/GameStarter.gd" id="1_irbja"]
 [ext_resource type="PackedScene" uid="uid://c334msi5eywjn" path="res://scenes/player.tscn" id="1_mgspa"]
+[ext_resource type="Script" path="res://scenes/audio_manager.gd" id="4_gjhda"]
 [ext_resource type="AudioStream" uid="uid://2trqx48xt366" path="res://audio/music/aerk-core-22-one-257976.mp3" id="4_itupe"]
+[ext_resource type="AudioStream" uid="uid://chpvewlngyhj4" path="res://audio/player/Footstep_Boot_Concrete-014.mp3" id="6_7e78u"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j6pp0"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -41,14 +43,21 @@ grounded_movement_speed = 150.0
 sprint_movement_speed = 200.0
 coyote_time = 0.2
 jump_velocity = 6.0
-airborne_movement_speed = 20.0
+airborne_movement_speed = 15.0
 fall_velocity = 1.5
 
 [node name="AudioManager" type="Node3D" parent="."]
+script = ExtResource("4_gjhda")
 
 [node name="MainTheme" type="AudioStreamPlayer" parent="AudioManager"]
 stream = ExtResource("4_itupe")
-volume_db = -44.973
+volume_db = -12.51
 autoplay = true
+
+[node name="Footstep1" type="AudioStreamPlayer3D" parent="AudioManager"]
+stream = ExtResource("6_7e78u")
+pitch_scale = 1.45
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
 
 [editable path="current_level/starting_area"]

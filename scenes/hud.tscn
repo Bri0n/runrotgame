@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsm6ji71lag76"]
+
+[ext_resource type="Script" uid="uid://nn0p54utmb3w" path="res://scripts/hud.gd" id="1_ahhtf"]
+
+[node name="Hud" type="Node2D"]
+script = ExtResource("1_ahhtf")
+
+[node name="remaining_time" type="Label" parent="."]
+offset_left = 57.0
+offset_top = 46.0
+offset_right = 357.0
+offset_bottom = 113.0
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 48
+text = "100"
+
+[node name="points_value" type="Label" parent="."]
+offset_left = 918.0
+offset_top = 46.0
+offset_right = 1218.0
+offset_bottom = 113.0
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 48
+text = "100"
+horizontal_alignment = 2

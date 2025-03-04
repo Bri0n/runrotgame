@@ -365,22 +365,27 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.934
 [node name="chips_pickup" parent="pickups" instance=ExtResource("4_4sd3v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 monitoring = true
+seconds_given = null
 
 [node name="chips_pickup2" parent="pickups" instance=ExtResource("4_4sd3v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.7, -15.4)
 monitoring = true
+seconds_given = null
 
 [node name="chips_pickup3" parent="pickups" instance=ExtResource("4_4sd3v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 13.9, -31.2)
 monitoring = true
+seconds_given = null
 
 [node name="chips_pickup4" parent="pickups" instance=ExtResource("4_4sd3v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1, 12.8, -27.7)
 monitoring = true
+seconds_given = null
 
 [node name="chips_pickup5" parent="pickups" instance=ExtResource("4_4sd3v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 13.3, -19.5)
 monitoring = true
+seconds_given = null
 
 [node name="entry_transition_hallway" parent="." instance=ExtResource("5_7btsc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.938, 0, 0)

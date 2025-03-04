@@ -39,9 +39,10 @@ func end_game():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 
-func process_pickup(points : int = 0):
+func process_pickup(points : int = 0, seconds : float = 0):
 	pickups_count += 1
 	score += points
+	increase_remaining_time(seconds)
 
 func load_levels(folder_path: String):
 	var dir = DirAccess.open(folder_path)

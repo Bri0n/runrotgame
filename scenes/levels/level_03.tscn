@@ -1,7 +1,7 @@
 [gd_scene load_steps=37 format=3 uid="uid://b35237p485wmw"]
 
 [ext_resource type="PackedScene" uid="uid://l6w78bgb0o7l" path="res://scenes/transition_hallway_exit.tscn" id="1_0mpxa"]
-[ext_resource type="Texture2D" uid="uid://bexl48jkriw55" path="res://assets/textures/skyboxes/Cold Sunset Equirect.png" id="1_1jnh5"]
+[ext_resource type="Texture2D" uid="uid://baglxbqfb3hka" path="res://assets/textures/skyboxes/Epic_BlueSunset_EquiRect_flat.png" id="1_jgt0v"]
 [ext_resource type="Texture2D" uid="uid://f81fxa1hi2jw" path="res://assets/textures/brick_red_04.jpg" id="2_3vnrb"]
 [ext_resource type="PackedScene" uid="uid://md5vxxjhpavw" path="res://scenes/transition_hallway_enter.tscn" id="2_jgt0v"]
 [ext_resource type="Texture2D" uid="uid://bkwg4vypyff56" path="res://assets/textures/grass_03.png" id="3_2k8jl"]
@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://mq3toad3d1cf" path="res://scenes/kill_zone.tscn" id="6_jg7km"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_jgt0v"]
-panorama = ExtResource("1_1jnh5")
+panorama = ExtResource("1_jgt0v")
 
 [sub_resource type="Sky" id="Sky_foqc1"]
 sky_material = SubResource("PanoramaSkyMaterial_jgt0v")

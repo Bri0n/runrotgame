@@ -8,7 +8,7 @@
 albedo_texture = ExtResource("3_x757p")
 uv1_triplanar = true
 
-[node name="TransitionHallway" type="Node3D"]
+[node name="entry_transition_hallway" type="Node3D"]
 script = ExtResource("1_pit5r")
 
 [node name="door_exit" parent="." instance=ExtResource("2_bbyi0")]

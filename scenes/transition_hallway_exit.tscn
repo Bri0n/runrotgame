@@ -11,7 +11,7 @@ uv1_triplanar = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_a1jyv"]
 size = Vector3(2.27545, 16.1091, 0.339844)
 
-[node name="TransitionHallway" type="Node3D"]
+[node name="exit_transition_hallway" type="Node3D"]
 script = ExtResource("1_rlco7")
 
 [node name="door_exit" parent="." instance=ExtResource("2_1eg5a")]

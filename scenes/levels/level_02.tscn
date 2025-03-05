@@ -1,0 +1,298 @@
+[gd_scene load_steps=24 format=3 uid="uid://dwo6ho8khh2gg"]
+
+[ext_resource type="Texture2D" uid="uid://b1fjtjyrv720v" path="res://assets/textures/skyboxes/blue_nebulae_1.png" id="1_edq1u"]
+[ext_resource type="PackedScene" uid="uid://l6w78bgb0o7l" path="res://scenes/transition_hallway_exit.tscn" id="1_mf7f7"]
+[ext_resource type="PackedScene" uid="uid://md5vxxjhpavw" path="res://scenes/transition_hallway_enter.tscn" id="1_pmlnk"]
+[ext_resource type="Texture2D" uid="uid://1ue3bxqbpnjs" path="res://assets/textures/Metal_14-128x128.png" id="4_n5em7"]
+[ext_resource type="Texture2D" uid="uid://cbl03tjxdc451" path="res://assets/textures/Stone_01-128x128.png" id="5_64aqs"]
+[ext_resource type="PackedScene" uid="uid://mq3toad3d1cf" path="res://scenes/kill_zone.tscn" id="7_64aqs"]
+[ext_resource type="PackedScene" uid="uid://bmitawbvtqfri" path="res://scenes/chips_pickup.tscn" id="8_b6l7m"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_b6l7m"]
+panorama = ExtResource("1_edq1u")
+energy_multiplier = 3.0
+
+[sub_resource type="Sky" id="Sky_u2tna"]
+sky_material = SubResource("PanoramaSkyMaterial_b6l7m")
+
+[sub_resource type="Environment" id="Environment_jm0yl"]
+background_mode = 2
+sky = SubResource("Sky_u2tna")
+ambient_light_source = 3
+ambient_light_energy = 4.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ccayl"]
+albedo_texture = ExtResource("4_n5em7")
+metallic = 0.6
+uv1_triplanar = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_edq1u"]
+radial_segments = 10
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_owl6u"]
+albedo_texture = ExtResource("5_64aqs")
+uv1_triplanar = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ikbui"]
+height = 0.83
+radial_segments = 6
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_edq1u"]
+height = 0.205933
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n5em7"]
+albedo_color = Color(0.589587, 0.374143, 0.282943, 1)
+albedo_texture = ExtResource("5_64aqs")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_64aqs"]
+material = SubResource("StandardMaterial3D_n5em7")
+height = 0.225
+radial_segments = 6
+
+[sub_resource type="Animation" id="Animation_u2tna"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("moving_platform_02:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-16.0152, -6.10844, -21.2688)]
+}
+
+[sub_resource type="Animation" id="Animation_n5em7"]
+resource_name = "moving_platform_01"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("moving_platform_02:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.01, 3.99, 6, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-15.424, 3.892, -19.948), Vector3(-11.984, 3.892, -22.503), Vector3(-15.424, 3.892, -26.082), Vector3(-19.056, 3.892, -22.52), Vector3(-15.424, 3.892, -19.948)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jm0yl"]
+_data = {
+&"RESET": SubResource("Animation_u2tna"),
+&"moving_platform_01": SubResource("Animation_n5em7")
+}
+
+[sub_resource type="Animation" id="Animation_b6l7m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-15.4455, -6.10844, -33.5067)]
+}
+
+[sub_resource type="Animation" id="Animation_64aqs"]
+resource_name = "moving_platform_02"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4.01, 6.01, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-15.4629, -6.10844, -36.5654), Vector3(-19.581, 3.892, -33.114), Vector3(-15.446, 3.892, -29.436), Vector3(-11.466, 3.892, -33.042), Vector3(-15.463, 3.892, -36.565)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u2tna"]
+_data = {
+&"RESET": SubResource("Animation_b6l7m"),
+&"moving_platform_02": SubResource("Animation_64aqs")
+}
+
+[node name="Level02" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jm0yl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.531352, -0.122336, 0.838271, -0.805364, 0.233993, 0.544643, -0.26278, -0.964511, 0.0258076, 6, 15, -18)
+light_indirect_energy = 4.0
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.638643, 0.544581, -0.543661, 0.721691, -0.17873, 0.668744, 0.267016, -0.819443, -0.507163, -11.1, 15, -26.4)
+light_energy = 0.5
+light_indirect_energy = 4.0
+
+[node name="entry_transition_hallway" parent="." instance=ExtResource("1_pmlnk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+
+[node name="exit_transition_hallway" parent="." instance=ExtResource("1_mf7f7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.1948, 1.54156, -68.3738)
+
+[node name="caños" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+material_override = SubResource("StandardMaterial3D_ccayl")
+use_collision = true
+
+[node name="cilinder" type="CSGMesh3D" parent="caños"]
+transform = Transform3D(0.49, 0, 0, 0, -1.52714e-07, 0.49, 0, -3.4937, -2.14186e-08, 0, -7, -11.5)
+mesh = SubResource("CylinderMesh_edq1u")
+
+[node name="cilinder3" type="CSGMesh3D" parent="caños"]
+transform = Transform3D(0.49, 0, 0, 0, -6.41599e-08, 0.49, 0, -1.46781, -2.14186e-08, -5, -7, -13.5566)
+mesh = SubResource("CylinderMesh_edq1u")
+
+[node name="cilinder4" type="CSGMesh3D" parent="caños"]
+transform = Transform3D(-2.14186e-08, 1.46781, -1.77636e-15, 2.14186e-08, 0, 0.49, 0.49, 6.41599e-08, -2.14186e-08, -6.20974, -7, -12.3015)
+mesh = SubResource("CylinderMesh_edq1u")
+
+[node name="cilinder5" type="CSGMesh3D" parent="caños"]
+transform = Transform3D(-2.14186e-08, 1.46781, -1.77636e-15, 2.14186e-08, 0, 0.49, 0.49, 6.41599e-08, -2.14186e-08, -11.4721, -7, -12.3015)
+mesh = SubResource("CylinderMesh_edq1u")
+
+[node name="cilinder6" type="CSGMesh3D" parent="caños"]
+transform = Transform3D(-2.14186e-08, 1.46781, -1.77636e-15, 2.14186e-08, 0, 0.49, 0.49, 6.41599e-08, -2.14186e-08, -16.5228, -7, -12.3015)
+mesh = SubResource("CylinderMesh_edq1u")
+
+[node name="cilinder7" type="CSGMesh3D" parent="caños"]
+transform = Transform3D(-0.49, -1.2832e-07, -5.32907e-15, -3.55271e-15, 6.41599e-08, 0.49, -4.28372e-08, 1.46781, -2.14186e-08, -17.7325, -7, -13.6322)
+mesh = SubResource("CylinderMesh_edq1u")
+
+[node name="cilinder8" type="CSGMesh3D" parent="caños"]
+transform = Transform3D(6.42557e-08, -1.46781, -1.77636e-15, -2.14186e-08, -7.10543e-15, 0.49, -0.49, -1.9248e-07, -2.14186e-08, -16.4774, -7, -14.857)
+mesh = SubResource("CylinderMesh_edq1u")
+
+[node name="cilinder11" type="CSGMesh3D" parent="caños"]
+transform = Transform3D(-0.49, -5.91216e-08, -3.55271e-15, -3.55271e-15, 2.95608e-08, 0.49, -4.28372e-08, 0.676273, -2.14186e-08, -15.2613, -7, -15.5172)
+mesh = SubResource("CylinderMesh_edq1u")
+
+[node name="cilinder9" type="CSGMesh3D" parent="caños"]
+transform = Transform3D(-0.49, -2.05662e-07, -3.55271e-15, -3.55271e-15, 1.02831e-07, 0.49, -4.28372e-08, 2.3525, -2.14186e-08, -15.4893, -7, -42.3618)
+mesh = SubResource("CylinderMesh_edq1u")
+
+[node name="cilinder10" type="CSGMesh3D" parent="caños"]
+transform = Transform3D(-0.49, -2.05662e-07, -3.55271e-15, -3.55271e-15, 1.02831e-07, 0.49, -4.28372e-08, 2.3525, -2.14186e-08, -15.4893, -11.1943, -47.1047)
+mesh = SubResource("CylinderMesh_edq1u")
+
+[node name="cilinder2" type="CSGMesh3D" parent="caños"]
+transform = Transform3D(-2.14186e-08, -2.51546, 0, -2.14186e-08, 0, 0.49, -0.49, 1.09954e-07, -2.14186e-08, -2.3, -7, -14.8)
+mesh = SubResource("CylinderMesh_edq1u")
+
+[node name="piso" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+material_override = SubResource("StandardMaterial3D_owl6u")
+use_collision = true
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="piso"]
+transform = Transform3D(2.34, 0, 0, 0, 0.468, 0, 0, 0, 2.34, 9.53674e-07, -7.04125, -6.06324)
+mesh = SubResource("CylinderMesh_ikbui")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="piso"]
+transform = Transform3D(0.994451, 0, 0, 0, 0.468, 0, 0, 0, 0.994451, 2.49825, -7.04125, -17.4968)
+mesh = SubResource("CylinderMesh_ikbui")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="piso"]
+transform = Transform3D(2.34, 0, 0, 0, 0.468, 0, 0, 0, 2.34, -15.4096, -7.04125, -22.5587)
+mesh = SubResource("CylinderMesh_ikbui")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="piso"]
+transform = Transform3D(2.34, 0, 0, 0, 0.468, 0, 0, 0, 2.34, -15.4359, -7.04125, -33.1822)
+mesh = SubResource("CylinderMesh_ikbui")
+
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="piso"]
+transform = Transform3D(1.9656, 0, 0, 0, 3.59889, 0, 0, 0, 1.8252, -15.2872, -12.2784, -53.8446)
+mesh = SubResource("CylinderMesh_ikbui")
+
+[node name="CSGMesh3D6" type="CSGMesh3D" parent="piso"]
+transform = Transform3D(1.404, 0, 0, 0, 5.16299, 0, 0, 0, 1.404, -15.9578, -11.9544, -54.6178)
+mesh = SubResource("CylinderMesh_ikbui")
+
+[node name="CSGMesh3D8" type="CSGMesh3D" parent="piso"]
+transform = Transform3D(2.2464, 0, 0, 0, 1.51573, 0, 0, 0, 2.5272, -16.9711, -13.4952, -55.2209)
+mesh = SubResource("CylinderMesh_ikbui")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="piso"]
+transform = Transform3D(1.404, 0, 0, 0, 3.36507, 0, 0, 0, 1.404, -16.526, -13.0719, -53.9361)
+mesh = SubResource("CylinderMesh_ikbui")
+
+[node name="CSGMesh3D10" type="CSGMesh3D" parent="piso"]
+transform = Transform3D(1.404, 0, 0, 0, 3.98304, 0, 0, 0, 1.404, -17.8144, -13.0719, -57.8949)
+mesh = SubResource("CylinderMesh_ikbui")
+
+[node name="CSGMesh3D7" type="CSGMesh3D" parent="piso"]
+transform = Transform3D(3.2292, 0, 0, 0, 6.41156, 0, 0, 0, 3.2292, -16.0781, -11.4882, -56.924)
+mesh = SubResource("CylinderMesh_ikbui")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="piso"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2241, -9.32458, -61.0075)
+size = Vector3(0.950348, 1, 6.92334)
+
+[node name="moving_platforms" type="Node" parent="."]
+
+[node name="moving_platform_02" type="AnimatableBody3D" parent="moving_platforms"]
+transform = Transform3D(1.77523, 0, 0, 0, 1.77523, 0, 0, 0, 1.77523, -16.0152, -6.10844, -21.2688)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="moving_platforms/moving_platform_02"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.897034, 0)
+shape = SubResource("CylinderShape3D_edq1u")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="moving_platforms/moving_platform_02"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.90661, 0)
+mesh = SubResource("CylinderMesh_64aqs")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="moving_platforms/moving_platform_02"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_jm0yl")
+}
+autoplay = "moving_platform_01"
+
+[node name="moving_platform_03" type="AnimatableBody3D" parent="moving_platforms"]
+transform = Transform3D(1.83148, 0, 0, 0, 1.83148, 0, 0, 0, 1.83148, -15.4455, -6.10844, -33.5067)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="moving_platforms/moving_platform_03"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.897034, 0)
+shape = SubResource("CylinderShape3D_edq1u")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="moving_platforms/moving_platform_03"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.90661, 0)
+mesh = SubResource("CylinderMesh_64aqs")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="moving_platforms/moving_platform_03"]
+libraries = {
+&"": SubResource("AnimationLibrary_u2tna")
+}
+autoplay = "moving_platform_02"
+
+[node name="Killzone" parent="." instance=ExtResource("7_64aqs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -16.114, 0)
+
+[node name="pickups" type="Node" parent="."]
+
+[node name="chips_pickup" parent="pickups" instance=ExtResource("8_b6l7m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.57464, 3.53833, -17.48)
+
+[node name="chips_pickup2" parent="pickups" instance=ExtResource("8_b6l7m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4283, 3.70173, -22.4585)
+
+[node name="chips_pickup3" parent="pickups" instance=ExtResource("8_b6l7m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4283, 3.70173, -33.1687)
+
+[node name="chips_pickup4" parent="pickups" instance=ExtResource("8_b6l7m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.8194, -1.0838, -57.9368)

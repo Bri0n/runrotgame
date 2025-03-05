@@ -12,7 +12,7 @@ var _parameters
 func _init(player : PlayerMovement, parameters : PlayerMovementParameters):
 	_camera = parameters.camera
 	_player = player
-	_movement_speed = parameters.sprint_movement_speed
+	_movement_speed = 400
 	_parameters = parameters
 
 func enter_state():

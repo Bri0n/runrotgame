@@ -5,6 +5,7 @@ var current_level: Node
 var next_level: Node
 var current_level_path : String = "res://scenes/main.tscn"
 var next_level_path : String
+var next_level_scene : PackedScene
 var levels := []
 
 # Timer
@@ -59,10 +60,12 @@ func load_levels(folder_path: String):
 
 func load_next_scene():
 	print("Loading scene: " + next_level_path)
-	var next_level_scene : PackedScene = load(next_level_path)
+
 	var next_level_instance = next_level_scene.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
 	next_level.add_child(next_level_instance)
+	call_deferred("_complete_transition")
 
+func _complete_transition():
 	var exit_transition_hallway : Node3D = current_level.get_child(0).get_node(GlobalConstants.EXIT_HALLWAY_NAME)
 	var entry_transition_hallway : Node3D = next_level.get_child(0).get_node(GlobalConstants.ENTRY_HALLWAY_NAME)
 	
@@ -85,3 +88,4 @@ func select_next_level():
 		random_index = randi() % levels.size()
 		next_level_path = levels[random_index]
 	print("Next level selected: " + next_level_path)
+	next_level_scene = load(next_level_path)

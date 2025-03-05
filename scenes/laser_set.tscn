@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwj8uandne4bu"]
+
+[ext_resource type="PackedScene" uid="uid://c6hvdrpupcd68" path="res://scenes/box.tscn" id="1_6fp8s"]
+[ext_resource type="PackedScene" uid="uid://bw4b8xyq4biud" path="res://scenes/laser.tscn" id="2_0w1go"]
+
+[node name="LaserSet" type="Node3D"]
+
+[node name="Box2" parent="." instance=ExtResource("1_6fp8s")]
+transform = Transform3D(0.30345, 0, 0, 0, 1, 0, 0, 0, 1, 0.00967443, 0.232567, -0.0304008)
+
+[node name="Box3" parent="." instance=ExtResource("1_6fp8s")]
+transform = Transform3D(0.30345, 0, 0, 0, 1, 0, 0, 0, 1, 6.00747, 0.232567, -0.0304008)
+
+[node name="Laser" parent="." instance=ExtResource("2_0w1go")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.103911, 0.268936, -0.0351882)
+target_position = Vector3(0, -6.015, 0)

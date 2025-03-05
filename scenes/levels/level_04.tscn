@@ -1,0 +1,427 @@
+[gd_scene load_steps=27 format=3 uid="uid://brkjdtc3uv48x"]
+
+[ext_resource type="PackedScene" uid="uid://md5vxxjhpavw" path="res://scenes/transition_hallway_enter.tscn" id="1_gkpor"]
+[ext_resource type="PackedScene" uid="uid://l6w78bgb0o7l" path="res://scenes/transition_hallway_exit.tscn" id="2_a0uur"]
+[ext_resource type="Texture2D" uid="uid://dyiq70jmn7h2k" path="res://assets/textures/water_waves.png" id="4_07dqf"]
+[ext_resource type="Texture2D" uid="uid://dkkwbeikonii8" path="res://assets/textures/metal_panel_grey.png" id="5_76vq8"]
+[ext_resource type="Texture2D" uid="uid://ds4hb0cvbmf8e" path="res://assets/textures/skyboxes/ringed_gas_giant_planet.png" id="6_gkpor"]
+[ext_resource type="PackedScene" uid="uid://c334msi5eywjn" path="res://scenes/player.tscn" id="7_03g8n"]
+[ext_resource type="PackedScene" uid="uid://dwj8uandne4bu" path="res://scenes/laser_set.tscn" id="8_d1lip"]
+[ext_resource type="PackedScene" uid="uid://bmitawbvtqfri" path="res://scenes/chips_pickup.tscn" id="9_a0uur"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gkpor"]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(0.671425, 0.99936, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2gf0y"]
+albedo_texture = ExtResource("4_07dqf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_41htr"]
+albedo_texture = ExtResource("5_76vq8")
+uv1_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r3bqp"]
+
+[sub_resource type="Animation" id="Animation_yy4na"]
+resource_name = "moveaeround"
+length = 2.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector3(-10.8426, -0.0799403, -29.1676), Vector3(11.1208, -0.0799403, -29.1676)]
+}
+
+[sub_resource type="Animation" id="Animation_07dqf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-10.8426, -0.0799403, -29.1676)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_76vq8"]
+_data = {
+&"RESET": SubResource("Animation_07dqf"),
+&"moveaeround": SubResource("Animation_yy4na")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0uur"]
+transparency = 1
+blend_mode = 4
+albedo_color = Color(0.939335, 0.926001, 0.829416, 1)
+emission_enabled = true
+emission = Color(0.941176, 0.92549, 0.831373, 1)
+emission_energy_multiplier = 0.2
+
+[sub_resource type="PrismMesh" id="PrismMesh_yy4na"]
+left_to_right = 0.0
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_xnnxd"]
+panorama = ExtResource("6_gkpor")
+
+[sub_resource type="Sky" id="Sky_nk3qu"]
+sky_material = SubResource("PanoramaSkyMaterial_xnnxd")
+
+[sub_resource type="Environment" id="Environment_x0nom"]
+background_mode = 2
+sky = SubResource("Sky_nk3qu")
+sky_rotation = Vector3(0, -3.56396, 0)
+
+[sub_resource type="Animation" id="Animation_22m3q"]
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-2.90141, 0, -51.7401), Vector3(-2.90141, 2.02793, -51.7401)]
+}
+
+[sub_resource type="Animation" id="Animation_tircd"]
+resource_name = "upndown"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0.318, -47.514)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oqick"]
+_data = {
+&"RESET": SubResource("Animation_22m3q"),
+&"upndown": SubResource("Animation_tircd")
+}
+
+[sub_resource type="Animation" id="Animation_gkpor"]
+resource_name = "move"
+length = 3.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector3(0.037, 0.202, -36.764), Vector3(0.037, 0.202, -19.538)]
+}
+
+[sub_resource type="Animation" id="Animation_a0uur"]
+length = 3.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector3(-6.04435, -2.76379, -20.0095), Vector3(-6.04435, -2.76379, -35.5708)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yy4na"]
+_data = {
+&"RESET": SubResource("Animation_a0uur"),
+&"move": SubResource("Animation_gkpor")
+}
+
+[node name="Level02" type="Node3D"]
+
+[node name="entry_transition_hallway" parent="." instance=ExtResource("1_gkpor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.89651)
+
+[node name="exit_transition_hallway" parent="." instance=ExtResource("2_a0uur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -68.7745)
+
+[node name="Paredes" type="CSGCombiner3D" parent="."]
+material_override = SubResource("StandardMaterial3D_gkpor")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Paredes"]
+transform = Transform3D(-6.93398e-08, 1, -7.14878e-07, 0, -4.37114e-08, -16.3545, -1.58631, -4.37114e-08, 3.12483e-14, 3.67883, 5.69085, -6.05687)
+material_override = SubResource("StandardMaterial3D_2gf0y")
+size = Vector3(10.1593, 0.48, 0.738984)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Paredes"]
+transform = Transform3D(-6.93398e-08, 1, -7.14878e-07, 0, -4.37114e-08, -16.3545, -1.58631, -4.37114e-08, 3.12483e-14, -3.77071, 5.69085, -6.05687)
+material_override = SubResource("StandardMaterial3D_2gf0y")
+size = Vector3(10.1593, 0.48, 0.738984)
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="Paredes"]
+transform = Transform3D(-6.93398e-08, 1, -7.14878e-07, 0, -4.37114e-08, -16.3545, -1.58631, -4.37114e-08, 3.12483e-14, -3.77071, 2.29011, -57.3228)
+material_override = SubResource("StandardMaterial3D_2gf0y")
+size = Vector3(10.1593, 0.48, 0.323105)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Paredes"]
+transform = Transform3D(-6.93398e-08, 1, -7.14878e-07, 0, -4.37114e-08, -16.3545, -1.58631, -4.37114e-08, 3.12483e-14, 3.89549, 2.23588, -57.3484)
+material_override = SubResource("StandardMaterial3D_2gf0y")
+size = Vector3(10.1593, 0.48, 0.323105)
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="Paredes"]
+transform = Transform3D(2.53449, 0, 0, 0, -4.37114e-08, -16.3545, 0, 1, -7.14878e-07, -0.0148166, 2.29011, -49.509)
+material_override = SubResource("StandardMaterial3D_2gf0y")
+size = Vector3(2.87277, 0.48, 0.323105)
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="Paredes"]
+transform = Transform3D(0.810296, 0, 0, 0, -4.37114e-08, -12.3876, 0, 1, -5.41478e-07, 2.42135, 2.27308, -65.4272)
+size = Vector3(3.77624, 0.48, 0.431084)
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="Paredes"]
+transform = Transform3D(0.810296, 0, 0, 0, -4.37114e-08, -12.3876, 0, 1, -5.41478e-07, -2.49841, 2.27308, -65.4272)
+size = Vector3(3.77624, 0.48, 0.431084)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Paredes"]
+transform = Transform3D(1.58631, 0, 0, 0, -4.37114e-08, -16.3545, 0, 1, -7.14878e-07, -0.0249749, 8.58048, -14.3211)
+material_override = SubResource("StandardMaterial3D_2gf0y")
+size = Vector3(4.885, 0.48, 0.56)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Paredes"]
+transform = Transform3D(1.58631, 0, 0, 0, -4.37114e-08, -16.3545, 0, 1, -7.14878e-07, 2.39272, 2.04424, 1.59024)
+material_override = SubResource("StandardMaterial3D_2gf0y")
+size = Vector3(1.83032, 1.0735, 0.304131)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Paredes"]
+transform = Transform3D(1.58631, 0, 0, 0, -4.37114e-08, -16.3545, 0, 1, -7.14878e-07, -2.38847, 2.35487, 1.63103)
+material_override = SubResource("StandardMaterial3D_2gf0y")
+size = Vector3(1.78631, 1.00074, 0.342003)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Paredes"]
+transform = Transform3D(1.58631, 0, 0, 0, -4.37114e-08, -16.3545, 0, 1, -7.14878e-07, -0.0249749, -0.525481, -14.3211)
+material_override = SubResource("StandardMaterial3D_2gf0y")
+size = Vector3(4.885, 0.48, 0.56)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Paredes"]
+transform = Transform3D(0.616, 0, 0, 0, -4.62107e-08, -6.352, 0, 1.05718, -2.77655e-07, -0.0249749, 1.37294, -14.3211)
+material_override = SubResource("StandardMaterial3D_2gf0y")
+operation = 2
+size = Vector3(4.885, 0.48, 0.56)
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Paredes"]
+transform = Transform3D(3.03, 0, 0, 0, 3.03, 0, 0, 0, 1.02666, -1.45655, -0.360223, -49.0627)
+operation = 2
+polygon = PackedVector2Array(0, 0, 0.368332, 0.852612, 0.652558, 0.84674, 1, 0)
+
+[node name="techos" type="CSGCombiner3D" parent="."]
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="techos"]
+transform = Transform3D(1.57859, 0, 0, 0, 0.894422, -7.13447, 0, 0.436239, 14.6278, -0.0257586, 7.97796, -6.60694)
+material_override = SubResource("StandardMaterial3D_2gf0y")
+size = Vector3(4.92, 0.425, 1.04911)
+
+[node name="plataformas" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.7)
+material_override = SubResource("StandardMaterial3D_41htr")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="plataformas"]
+transform = Transform3D(1.42482, 0, 0, 0, 1, 0, 0, 0, 17.6154, 2.8107, -0.7099, -14.5653)
+size = Vector3(1, 0.582398, 1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="plataformas"]
+transform = Transform3D(1.42482, 0, 0, 0, 1, 0, 0, 0, 17.6154, -3.01351, -3.36541, -14.5653)
+size = Vector3(1, 0.140381, 1)
+
+[node name="PlataformaBase" type="CSGBox3D" parent="plataformas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.23041, -13.5392)
+size = Vector3(1, 0.140381, 1)
+
+[node name="Area3D" type="Area3D" parent="plataformas/PlataformaBase"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="plataformas/PlataformaBase/Area3D"]
+shape = SubResource("BoxShape3D_r3bqp")
+
+[node name="PlataformaBase3" type="CSGBox3D" parent="plataformas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.19149, -2.75628, -13.5392)
+size = Vector3(1, 1.06512, 1)
+
+[node name="PlataformaBase4" type="CSGBox3D" parent="plataformas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.42005, 0.376015, -23.3985)
+size = Vector3(1, 1.06512, 1)
+
+[node name="PlataformaBase2" type="CSGBox3D" parent="plataformas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8426, -0.0799403, -24.2072)
+size = Vector3(4.77441, 0.479504, 3.62921)
+
+[node name="PlataformaBase5" type="CSGBox3D" parent="plataformas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8426, -0.0799403, -29.1676)
+size = Vector3(4.77441, 0.479504, 3.62921)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="plataformas/PlataformaBase5"]
+libraries = {
+&"": SubResource("AnimationLibrary_76vq8")
+}
+autoplay = "moveaeround"
+
+[node name="Light4" type="MeshInstance3D" parent="plataformas/PlataformaBase5"]
+transform = Transform3D(4.39458e-16, -1.00536e-08, -0.23, -0.23, -1.00536e-08, 0, -1.00536e-08, 0.23, -1.00536e-08, -0.0902281, -0.0593703, 1.92645)
+material_override = SubResource("StandardMaterial3D_a0uur")
+mesh = SubResource("PrismMesh_yy4na")
+skeleton = NodePath("../../../Lights")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="plataformas/PlataformaBase5/Light4"]
+transform = Transform3D(4.34783, -4.26326e-14, 3.38813e-21, 4.26326e-14, 4.34783, 8.52651e-14, 0, -8.52651e-14, 4.34783, -0.257564, -0.164145, 0)
+light_color = Color(0.941176, 0.92549, 0.831373, 1)
+light_energy = 2.127
+light_size = 0.155
+light_specular = 0.435
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="plataformas"]
+transform = Transform3D(0.819152, 0.573576, 0, -0.573576, 0.819152, 0, 0, 0, 1, -5.95217, -1.68408, -22.8913)
+size = Vector3(6.19849, 0.140381, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="plataformas"]
+transform = Transform3D(1.58631, 0, 0, 0, 1, 0, 0, 0, 16.3545, -0.0249749, -0.525481, 7.39788)
+material_override = SubResource("StandardMaterial3D_2gf0y")
+size = Vector3(4.97, 0.215, 1)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="plataformas"]
+transform = Transform3D(1.58631, 0, 0, 0, 1, 0, 0, 0, 16.3545, -0.0249749, -0.525481, -43.7309)
+material_override = SubResource("StandardMaterial3D_2gf0y")
+size = Vector3(4.97, 0.215, 1)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="plataformas"]
+transform = Transform3D(1.58631, 0, 0, 0, 1, 0, 0, 0, 16.3545, 0.0475014, 4.81082, -43.6548)
+material_override = SubResource("StandardMaterial3D_2gf0y")
+size = Vector3(4.54353, 0.215, 0.918182)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_x0nom")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.991868, -0.122936, -0.0329405, 0.0657233, 0.716386, -0.694602, 0.108989, 0.686788, 0.71864, 0.0936166, 7.9837, -10.4136)
+visible = false
+light_energy = 3.078
+light_indirect_energy = 2.219
+
+[node name="OmniLight3D" type="OmniLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00489378, 2.57602, -10.616)
+visible = false
+light_energy = 6.336
+omni_range = 5.935
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.30331, 2.57602, -17.9945)
+visible = false
+light_energy = 6.336
+omni_range = 5.935
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.98137, 2.57602, -17.9945)
+visible = false
+light_energy = 6.336
+omni_range = 5.935
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.348027, -0.491038, -0.798598, -0.194394, -0.871137, 0.450923, -0.917109, -0.00169067, -0.398633, -147.646, 11.2078, -88.6829)
+light_color = Color(0.941176, 0.92549, 0.831373, 1)
+
+[node name="player" parent="." instance=ExtResource("7_03g8n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14509, -4.91709)
+grounded_movement_speed = 150.0
+sprint_movement_speed = 200.0
+coyote_time = 0.2
+jump_velocity = 6.0
+airborne_movement_speed = 15.0
+fall_velocity = 1.5
+
+[node name="LaserSet" parent="." instance=ExtResource("8_d1lip")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.90141, 0, -51.7401)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LaserSet"]
+libraries = {
+&"": SubResource("AnimationLibrary_oqick")
+}
+autoplay = "RESET"
+
+[node name="LaserSet2" parent="." instance=ExtResource("8_d1lip")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.04435, -2.76379, -20.0095)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LaserSet2"]
+libraries = {
+&"": SubResource("AnimationLibrary_yy4na")
+}
+autoplay = "move"
+
+[node name="LaserSet3" parent="." instance=ExtResource("8_d1lip")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.04435, -2.76379, -20.0095)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LaserSet3"]
+libraries = {
+&"": SubResource("AnimationLibrary_yy4na")
+}
+autoplay = "RESET"
+
+[node name="chips_pickup" parent="." instance=ExtResource("9_a0uur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0380534, -1.73065, -27.0564)
+
+[node name="chips_pickup2" parent="." instance=ExtResource("9_a0uur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.4276, 1.39024, -37.1571)
+
+[node name="chips_pickup3" parent="." instance=ExtResource("9_a0uur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.527, 0.726719, -38.9254)
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="Light" type="MeshInstance3D" parent="Lights"]
+transform = Transform3D(1.00536e-08, -0.23, 2.01072e-08, -0.23, -1.00536e-08, 0, 8.78915e-16, -2.01072e-08, -0.23, 1.98393, -0.668351, -20.5357)
+material_override = SubResource("StandardMaterial3D_a0uur")
+mesh = SubResource("PrismMesh_yy4na")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lights/Light"]
+transform = Transform3D(4.34783, -4.26326e-14, 3.38813e-21, 4.26326e-14, 4.34783, 8.52651e-14, 0, -8.52651e-14, 4.34783, -0.257564, -0.164145, 0)
+light_color = Color(0.941176, 0.92549, 0.831373, 1)
+light_energy = 2.127
+light_size = 0.155
+light_specular = 0.435
+
+[node name="Light2" type="MeshInstance3D" parent="Lights"]
+transform = Transform3D(1.00536e-08, -0.23, 2.01072e-08, -0.23, -1.00536e-08, 0, 8.78915e-16, -2.01072e-08, -0.23, 1.98393, -0.668351, -29.4913)
+material_override = SubResource("StandardMaterial3D_a0uur")
+mesh = SubResource("PrismMesh_yy4na")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lights/Light2"]
+transform = Transform3D(4.34783, -4.26326e-14, 3.38813e-21, 4.26326e-14, 4.34783, 8.52651e-14, 0, -8.52651e-14, 4.34783, -0.257564, -0.164145, 0)
+light_color = Color(0.941176, 0.92549, 0.831373, 1)
+light_energy = 2.127
+light_size = 0.155
+light_specular = 0.435
+
+[node name="Light3" type="MeshInstance3D" parent="Lights"]
+transform = Transform3D(1.00536e-08, -0.23, 2.01072e-08, -0.23, -1.00536e-08, 0, 8.78915e-16, -2.01072e-08, -0.23, 1.98393, -0.668351, -36.296)
+material_override = SubResource("StandardMaterial3D_a0uur")
+mesh = SubResource("PrismMesh_yy4na")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lights/Light3"]
+transform = Transform3D(4.34783, -4.26326e-14, 3.38813e-21, 4.26326e-14, 4.34783, 8.52651e-14, 0, -8.52651e-14, 4.34783, -0.257564, -0.164145, 0)
+light_color = Color(0.941176, 0.92549, 0.831373, 1)
+light_energy = 2.127
+light_size = 0.155
+light_specular = 0.435

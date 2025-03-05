@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://c6hvdrpupcd68"]
+
+[ext_resource type="Texture2D" uid="uid://dtiqapnjnaos7" path="res://assets/textures/Tile_09-128x128.png" id="1_3inec"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ks2v0"]
+albedo_texture = ExtResource("1_3inec")
+
+[sub_resource type="BoxMesh" id="BoxMesh_on5l8"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_on5l8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c2ln5"]
+albedo_color = Color(0.512746, 0.740937, 0.406758, 1)
+emission_enabled = true
+emission = Color(0.513726, 0.741176, 0.407843, 1)
+emission_energy_multiplier = 2.91
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_telwu"]
+
+[node name="Box" type="MeshInstance3D"]
+transform = Transform3D(0.131537, 0, 0, 0, 0.365384, 0, 0, 0, 0.279065, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_ks2v0")
+mesh = SubResource("BoxMesh_on5l8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_on5l8")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="."]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.107071, 0, -5.43985e-09, 0, -0.0534734, 0, 9.36042e-09, 0, 0.0622246, 0, 0.12654, 0.23713)
+material_override = SubResource("StandardMaterial3D_c2ln5")
+mesh = SubResource("CapsuleMesh_telwu")

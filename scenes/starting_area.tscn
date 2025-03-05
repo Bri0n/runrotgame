@@ -1,11 +1,24 @@
-[gd_scene load_steps=10 format=3 uid="uid://cukwwoh4efd66"]
+[gd_scene load_steps=12 format=3 uid="uid://cukwwoh4efd66"]
 
 [ext_resource type="Shader" uid="uid://cnpt7gv8wgcay" path="res://shaders/ursc/spatial/basic_opaque.gdshader" id="1_mumia"]
 [ext_resource type="PackedScene" uid="uid://mq3toad3d1cf" path="res://scenes/kill_zone.tscn" id="3_7vpgr"]
 [ext_resource type="Shader" uid="uid://dorm5wwxqmgl5" path="res://shaders/ursc/spatial/standard_opaque.gdshader" id="3_opx81"]
 [ext_resource type="PackedScene" uid="uid://l6w78bgb0o7l" path="res://scenes/transition_hallway_exit.tscn" id="4_dx0k5"]
-[ext_resource type="PackedScene" uid="uid://c8cq6vatu3s3w" path="res://scenes/levels/zona_vertical_01.tscn" id="5_1w6qi"]
 [ext_resource type="Texture2D" uid="uid://biqlyq0tubvy" path="res://assets/textures/Tile_13-128x128.png" id="7_mumia"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fk3b5"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+energy_multiplier = 2.0
+
+[sub_resource type="Sky" id="Sky_opx81"]
+sky_material = SubResource("ProceduralSkyMaterial_fk3b5")
+
+[sub_resource type="Environment" id="Environment_mumia"]
+background_mode = 2
+sky = SubResource("Sky_opx81")
+tonemap_mode = 2
+glow_enabled = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q4by3"]
 render_priority = 0
@@ -43,6 +56,13 @@ shader_parameter/cull_distance_override = 0.0
 shader_parameter/convert_vertex_colors = false
 
 [node name="starting_area" type="Node"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.388576, 0.314662, 0, 0.62932, 0.777146, -0.500003, 0.673027, -0.545006, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mumia")
 
 [node name="walls" type="CSGCombiner3D" parent="."]
 transform = Transform3D(5.8, 0, 0, 0, 9.28969, 0, 0, 0, 5.8, 0.9, -0.131029, 0)
@@ -90,4 +110,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
 
 [node name="exit_transition_hallway" parent="." instance=ExtResource("4_dx0k5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.755)
-next_scene = ExtResource("5_1w6qi")

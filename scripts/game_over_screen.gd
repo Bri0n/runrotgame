@@ -40,8 +40,7 @@ func _make_score_pretty(score : int):
 	return pretty_score
 
 func _on_start_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
-	GameManager.start_game()
+	GameManager.restart_game()
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()

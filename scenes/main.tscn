@@ -1,12 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dn8hadwtayo2g"]
+[gd_scene load_steps=4 format=3 uid="uid://dn8hadwtayo2g"]
 
 [ext_resource type="PackedScene" uid="uid://cukwwoh4efd66" path="res://scenes/starting_area.tscn" id="1_73xcv"]
-[ext_resource type="Script" uid="uid://rmjiy81jvkhf" path="res://scripts/GameStarter.gd" id="1_irbja"]
 [ext_resource type="PackedScene" uid="uid://c334msi5eywjn" path="res://scenes/player.tscn" id="1_mgspa"]
 [ext_resource type="PackedScene" uid="uid://dsm6ji71lag76" path="res://scenes/hud.tscn" id="4_jyhfs"]
 
 [node name="game" type="Node3D"]
-script = ExtResource("1_irbja")
 
 [node name="current_level" type="Node" parent="."]
 

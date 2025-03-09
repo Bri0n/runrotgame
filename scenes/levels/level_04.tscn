@@ -1,11 +1,10 @@
-[gd_scene load_steps=28 format=3 uid="uid://brkjdtc3uv48x"]
+[gd_scene load_steps=27 format=3 uid="uid://brkjdtc3uv48x"]
 
 [ext_resource type="PackedScene" uid="uid://md5vxxjhpavw" path="res://scenes/transition_hallway_enter.tscn" id="1_gkpor"]
 [ext_resource type="PackedScene" uid="uid://l6w78bgb0o7l" path="res://scenes/transition_hallway_exit.tscn" id="2_a0uur"]
 [ext_resource type="Texture2D" uid="uid://dyiq70jmn7h2k" path="res://assets/textures/water_waves.png" id="4_07dqf"]
 [ext_resource type="Texture2D" uid="uid://dkkwbeikonii8" path="res://assets/textures/metal_panel_grey.png" id="5_76vq8"]
 [ext_resource type="Texture2D" uid="uid://ds4hb0cvbmf8e" path="res://assets/textures/skyboxes/ringed_gas_giant_planet.png" id="6_gkpor"]
-[ext_resource type="PackedScene" uid="uid://c334msi5eywjn" path="res://scenes/player.tscn" id="7_03g8n"]
 [ext_resource type="PackedScene" uid="uid://dwj8uandne4bu" path="res://scenes/laser_set.tscn" id="8_d1lip"]
 [ext_resource type="PackedScene" uid="uid://bmitawbvtqfri" path="res://scenes/chips_pickup.tscn" id="9_a0uur"]
 [ext_resource type="PackedScene" uid="uid://mq3toad3d1cf" path="res://scenes/kill_zone.tscn" id="9_yy4na"]
@@ -24,6 +23,21 @@ uv1_triplanar = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r3bqp"]
 
+[sub_resource type="Animation" id="Animation_07dqf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-10.8426, -0.0799403, -29.1676)]
+}
+
 [sub_resource type="Animation" id="Animation_yy4na"]
 resource_name = "moveaeround"
 length = 2.5
@@ -39,21 +53,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(-2, 1),
 "update": 0,
 "values": [Vector3(-10.8426, -0.0799403, -29.1676), Vector3(11.1208, -0.0799403, -29.1676)]
-}
-
-[sub_resource type="Animation" id="Animation_07dqf"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-10.8426, -0.0799403, -29.1676)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_76vq8"]
@@ -116,6 +115,22 @@ _data = {
 &"upndown": SubResource("Animation_tircd")
 }
 
+[sub_resource type="Animation" id="Animation_a0uur"]
+length = 3.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector3(-6.04435, -2.76379, -20.0095), Vector3(-6.04435, -2.76379, -35.5708)]
+}
+
 [sub_resource type="Animation" id="Animation_gkpor"]
 resource_name = "move"
 length = 3.0
@@ -131,22 +146,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(-2, 1),
 "update": 0,
 "values": [Vector3(0.037, 0.202, -36.764), Vector3(0.037, 0.202, -19.538)]
-}
-
-[sub_resource type="Animation" id="Animation_a0uur"]
-length = 3.0
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 3),
-"transitions": PackedFloat32Array(-2, 1),
-"update": 0,
-"values": [Vector3(-6.04435, -2.76379, -20.0095), Vector3(-6.04435, -2.76379, -35.5708)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yy4na"]
@@ -344,15 +343,6 @@ omni_range = 5.935
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.348027, -0.491038, -0.798598, -0.194394, -0.871137, 0.450923, -0.917109, -0.00169067, -0.398633, -147.646, 11.2078, -88.6829)
 light_color = Color(0.941176, 0.92549, 0.831373, 1)
-
-[node name="player" parent="." instance=ExtResource("7_03g8n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14509, -4.91709)
-grounded_movement_speed = 150.0
-sprint_movement_speed = 200.0
-coyote_time = 0.2
-jump_velocity = 6.0
-airborne_movement_speed = 15.0
-fall_velocity = 1.5
 
 [node name="LaserSet" parent="." instance=ExtResource("8_d1lip")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.90141, 0, -51.7401)

@@ -26,7 +26,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../../moving_platform_02_pivot:rotation")
+tracks/0/path = NodePath("moving_platform_02_pivot:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -38,7 +38,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("..:rotation")
+tracks/1/path = NodePath("moving_platform_03_pivot:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -55,7 +55,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../../moving_platform_02_pivot:rotation")
+tracks/0/path = NodePath("moving_platform_02_pivot:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -67,7 +67,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("..:rotation")
+tracks/1/path = NodePath("moving_platform_03_pivot:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -157,39 +157,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.1948, 1.54156, -68.3738)
 [node name="moving_platforms" type="Node" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="moving_platforms"]
-root_node = NodePath("../moving_platform_03_pivot/moving_platform_03")
 libraries = {
 &"": SubResource("AnimationLibrary_u2tna")
 }
 autoplay = "moving_platforms"
 
-[node name="moving_platform_02_pivot" type="Node3D" parent="moving_platforms"]
+[node name="moving_platform_02_pivot" type="AnimatableBody3D" parent="moving_platforms"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4, 3.1, -22.7)
 
-[node name="moving_platform_02" type="AnimatableBody3D" parent="moving_platforms/moving_platform_02_pivot"]
-transform = Transform3D(1.77523, 0, 0, 0, 1.77523, 0, 0, 0, 1.77523, -0.0151854, 1.4535, 3.73119)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="moving_platforms/moving_platform_02_pivot/moving_platform_02"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.897034, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="moving_platforms/moving_platform_02_pivot"]
+transform = Transform3D(1.77523, 0, -7.92885e-06, 0, 1.77523, 0, 7.92885e-06, 0, 1.77523, -0.0152016, -0.138941, 3.73119)
 shape = SubResource("CylinderShape3D_edq1u")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="moving_platforms/moving_platform_02_pivot/moving_platform_02"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.90661, 0)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="moving_platforms/moving_platform_02_pivot"]
+transform = Transform3D(1.77523, 0, -7.92885e-06, 0, 1.77523, 0, 7.92885e-06, 0, 1.77523, -0.0152016, -0.155941, 3.73119)
 mesh = SubResource("CylinderMesh_64aqs")
+skeleton = NodePath("")
 
-[node name="moving_platform_03_pivot" type="Node3D" parent="moving_platforms"]
+[node name="moving_platform_03_pivot" type="AnimatableBody3D" parent="moving_platforms"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4246, 3.6, -33.2)
 
-[node name="moving_platform_03" type="AnimatableBody3D" parent="moving_platforms/moving_platform_03_pivot"]
-transform = Transform3D(1.83148, 0, 0, 0, 1.83148, 0, 0, 0, 1.83148, -0.0600901, 1.03512, -3.7129)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="moving_platforms/moving_platform_03_pivot/moving_platform_03"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.897034, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="moving_platforms/moving_platform_03_pivot"]
+transform = Transform3D(1.83148, 0, 0, 0, 1.83148, 0, 0, 0, 1.83148, -0.0600891, -0.60778, -3.7129)
 shape = SubResource("CylinderShape3D_edq1u")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="moving_platforms/moving_platform_03_pivot/moving_platform_03"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.90661, 0)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="moving_platforms/moving_platform_03_pivot"]
+transform = Transform3D(1.83148, 0, 0, 0, 1.83148, 0, 0, 0, 1.83148, -0.0600891, -0.625318, -3.7129)
 mesh = SubResource("CylinderMesh_64aqs")
+skeleton = NodePath("")
 
 [node name="pickups" type="Node" parent="."]
 

@@ -13,6 +13,7 @@ config_version=5
 config/name="Runrot"
 run/main_scene="uid://cw3o7gwynkyqn"
 config/features=PackedStringArray("4.4", "Mobile")
+run/max_fps=60
 config/icon="res://icon.svg"
 <<<<<<<HEADrun/main_scene="uid://cw3o7gwynkyqn"
 
@@ -24,9 +25,8 @@ AudioManager="*res://scenes/audio_manager.tscn"
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
-window/size/mode=3
+window/size/viewport_width=1280
+window/size/viewport_height=720
 
 [editor]
 
@@ -113,6 +113,8 @@ sprint={
 textures/canvas_textures/default_texture_filter=0
 textures/canvas_textures/default_texture_repeat=1
 renderer/rendering_method="mobile"
+lights_and_shadows/size/mode=0
+lights_and_shadows/size/viewport_height=720
 
 [shader_globals]
 

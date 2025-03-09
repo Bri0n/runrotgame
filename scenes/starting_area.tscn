@@ -1,9 +1,11 @@
-[gd_scene load_steps=17 format=4 uid="uid://cukwwoh4efd66"]
+[gd_scene load_steps=19 format=4 uid="uid://cukwwoh4efd66"]
 
 [ext_resource type="Shader" uid="uid://cnpt7gv8wgcay" path="res://shaders/ursc/spatial/basic_opaque.gdshader" id="1_mumia"]
 [ext_resource type="PackedScene" uid="uid://mq3toad3d1cf" path="res://scenes/kill_zone.tscn" id="3_7vpgr"]
 [ext_resource type="Shader" uid="uid://dorm5wwxqmgl5" path="res://shaders/ursc/spatial/standard_opaque.gdshader" id="3_opx81"]
 [ext_resource type="PackedScene" uid="uid://l6w78bgb0o7l" path="res://scenes/transition_hallway_exit.tscn" id="4_dx0k5"]
+[ext_resource type="FontFile" uid="uid://cehtepccbhxnb" path="res://assets/fonts/upheavtt.ttf" id="6_opx81"]
+[ext_resource type="PackedScene" uid="uid://bmitawbvtqfri" path="res://scenes/chips_pickup.tscn" id="7_kkvmv"]
 [ext_resource type="Texture2D" uid="uid://biqlyq0tubvy" path="res://assets/textures/Tile_13-128x128.png" id="7_mumia"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fk3b5"]
@@ -140,3 +142,41 @@ skeleton = NodePath("../..")
 
 [node name="Killzone" parent="." instance=ExtResource("3_7vpgr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+
+[node name="hecho_en_48_horas" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.98243, 1.07582, -2.59318)
+text = "Un juego hecho
+en 48 horas para
+aprender Godot."
+font = ExtResource("6_opx81")
+font_size = 48
+
+[node name="controles" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.40985, 1.07582, -4.6965)
+text = "WASD para moverte,
+espacio para saltar"
+font = ExtResource("6_opx81")
+font_size = 64
+
+[node name="controles_2" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.40985, 0.627438, -4.6965)
+text = "espacio en el aire par doble salto"
+font = ExtResource("6_opx81")
+font_size = 36
+
+[node name="titulo" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.036305, 2.07674, -4.8951)
+text = "runrot"
+font = ExtResource("6_opx81")
+font_size = 128
+
+[node name="papitas" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.028421, 1.0185, -7.47119)
+text = "Recolectar papitas
+para puntos
+y tiempo extra"
+font = ExtResource("6_opx81")
+font_size = 18
+
+[node name="chips_pickup" parent="." instance=ExtResource("7_kkvmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00265817, 0.49248, -7.48521)

@@ -39,12 +39,12 @@ uv1_triplanar = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_evksn"]
 size = Vector3(1, 0.428662, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m41b0"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hvqp8"]
 albedo_texture = ExtResource("2_3vnrb")
 uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_srnsr"]
-material = SubResource("StandardMaterial3D_m41b0")
+material = SubResource("StandardMaterial3D_hvqp8")
 size = Vector3(1, 0.46, 1)
 
 [sub_resource type="Animation" id="Animation_hvqp8"]
@@ -594,15 +594,20 @@ autoplay = "moving_platform_06"
 
 [node name="chips_pickup" parent="pickups" instance=ExtResource("9_hvqp8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.36698, -0.287711, -13.2149)
+seconds_given = 0.0
 
 [node name="chips_pickup2" parent="pickups" instance=ExtResource("9_hvqp8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.414332, -3.72589, -17.0944)
+seconds_given = 0.0
 
 [node name="chips_pickup3" parent="pickups" instance=ExtResource("9_hvqp8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3285, 4.84805, -39.7497)
+seconds_given = 0.0
 
 [node name="chips_pickup4" parent="pickups" instance=ExtResource("9_hvqp8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.07938, 5.11035, -42.6017)
+seconds_given = 0.0
 
 [node name="chips_pickup5" parent="pickups" instance=ExtResource("9_hvqp8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.0564, 1.31109, -59.042)
+seconds_given = 0.0

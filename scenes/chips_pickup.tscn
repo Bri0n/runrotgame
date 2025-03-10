@@ -133,7 +133,6 @@ _data = {
 [node name="chips_pickup" type="Area3D"]
 script = ExtResource("1_icdc7")
 points_given = 100
-seconds_given = 15
 
 [node name="chips" parent="." instance=ExtResource("1_k2004")]
 

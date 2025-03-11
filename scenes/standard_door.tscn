@@ -7,7 +7,7 @@
 size = Vector3(0.881226, 1.87903, 0.0450134)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n7lm5"]
-size = Vector3(0.886353, 1.90244, 0.550537)
+size = Vector3(3.08902, 1.90244, 4.00131)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kcssu"]
 size = Vector3(1, 2.23047, 1.70753)
@@ -26,8 +26,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.460266, 0.947693, 0.00367737)
 shape = SubResource("BoxShape3D_y4nko")
 
+[node name="AnimationPlayer" parent="door_brown_a" index="1"]
+speed_scale = 2.0
+
 [node name="door_closed_collider" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.451544, 0.956318, 0.000522152)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.806936, 0.956318, -1.72487)
 shape = SubResource("BoxShape3D_n7lm5")
 
 [node name="door_opened_collider" type="CollisionShape3D" parent="."]

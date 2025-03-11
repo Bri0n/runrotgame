@@ -25,13 +25,20 @@ var _coyote_time_timer = -1
 # Sprint FOV lerp
 var normal_fov: float = 75.0
 var sprint_fov: float = 60.0
-var fov_lerp_speed: float = 5.0  # Velocidad de interpolación del FOV
+var fov_lerp_speed: float = 5.0
 var is_moving: bool = false
 
 # Headbob
 var head_bob_intensity = 0.05
 var head_bob_speed = 22.0
 var head_bob_timer = 0.0
+
+# Footstep Audio vars
+var footstep_timer := 0.0
+var footstep_interval_walk := 0.45
+var footstep_interval_sprint := 0.3
+var current_footstep_interval : float
+
 
 func _init(player : PlayerMovement, parameters : PlayerMovementParameters):
 	_camera = parameters.camera
@@ -87,6 +94,7 @@ func _handle_jump() -> void:
 		_player.change_status(PlayerStatusAirborne.new(_player, _parameters))
 
 func _move(delta : float) -> void:
+	
 	if _movement_direction:
 		is_moving = true
 		var current_movement_speed : float
@@ -94,11 +102,13 @@ func _move(delta : float) -> void:
 		if Input.is_action_pressed("sprint"):
 			current_movement_speed = _sprint_speed
 			current_maximum_speed = _max_sprint_speed
+			current_footstep_interval = footstep_interval_sprint
 			head_bob_timer += delta * head_bob_speed
 			_camera.transform.origin.y = sin(head_bob_timer) * head_bob_intensity
 		else:
 			current_movement_speed = _movement_speed
 			current_maximum_speed = _max_grounded_speed
+			current_footstep_interval = footstep_interval_walk
 			_camera.transform.origin.y = 0
 		var velocity_change_x = _movement_direction.x * _movement_speed * delta
 		var velocity_change_z = _movement_direction.z * _movement_speed * delta
@@ -111,8 +121,11 @@ func _move(delta : float) -> void:
 		_player.velocity.x = move_toward(_player.velocity.x, 0, _stopping_speed * delta)
 		_player.velocity.z = move_toward(_player.velocity.z, 0, _stopping_speed * delta)
 		is_moving = false
-	if _player.velocity.length() > 0:
+	
+	footstep_timer += delta
+	if footstep_timer >= current_footstep_interval and _player.velocity.length() > 0.1:
 		AudioManager.play_footstep_audio()
+		footstep_timer = 0
 
 func _update_fov(delta: float):
 	if is_moving:

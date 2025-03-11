@@ -28,6 +28,8 @@ func _input(event: InputEvent) -> void:
 			animation_player.play("door_open")
 			is_open = true
 			_toggle_colliders()
+		
+		AudioManager.play_doorslam_audio()
 
 func _toggle_colliders():
 	door_opened_collider.disabled = !is_open

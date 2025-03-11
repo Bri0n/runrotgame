@@ -441,15 +441,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.36698, 1.81518, -13.3517)
 
 [node name="chips_pickup2" parent="pickups" instance=ExtResource("9_hvqp8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.414332, -3.72589, -17.0944)
-seconds_given = 0.0
 
 [node name="chips_pickup3" parent="pickups" instance=ExtResource("9_hvqp8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3285, 4.84805, -39.7497)
-seconds_given = 0.0
 
 [node name="chips_pickup4" parent="pickups" instance=ExtResource("9_hvqp8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01693, 5.11035, -42.5705)
 
 [node name="chips_pickup5" parent="pickups" instance=ExtResource("9_hvqp8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.0564, 1.31109, -59.042)
-seconds_given = 0.0

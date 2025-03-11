@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://brkjdtc3uv48x"]
+[gd_scene load_steps=38 format=3 uid="uid://brkjdtc3uv48x"]
 
 [ext_resource type="PackedScene" uid="uid://md5vxxjhpavw" path="res://scenes/transition_hallway_enter.tscn" id="1_gkpor"]
 [ext_resource type="PackedScene" uid="uid://l6w78bgb0o7l" path="res://scenes/transition_hallway_exit.tscn" id="2_a0uur"]
@@ -215,6 +215,21 @@ _data = {
 &"move": SubResource("Animation_gkpor")
 }
 
+[sub_resource type="Animation" id="Animation_d1lip"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-3.24787, 0, -55.3619)]
+}
+
 [sub_resource type="Animation" id="Animation_03g8n"]
 resource_name = "movement"
 loop_mode = 2
@@ -231,7 +246,13 @@ tracks/0/keys = {
 "values": [Vector3(-3.24787, 0, -55.3619), Vector3(-3.248, 4.048, -55.362)]
 }
 
-[sub_resource type="Animation" id="Animation_d1lip"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o3rdr"]
+_data = {
+&"RESET": SubResource("Animation_d1lip"),
+&"movement": SubResource("Animation_03g8n")
+}
+
+[sub_resource type="Animation" id="Animation_vmerw"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -243,13 +264,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-3.24787, 0, -55.3619)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_o3rdr"]
-_data = {
-&"RESET": SubResource("Animation_d1lip"),
-&"movement": SubResource("Animation_03g8n")
+"values": [Vector3(-3.34189, -0.400548, -61.8782)]
 }
 
 [sub_resource type="Animation" id="Animation_lr2mp"]
@@ -267,21 +282,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(-2, 1),
 "update": 0,
 "values": [Vector3(-3.34189, -0.400548, -61.8782), Vector3(-3.342, 3.904, -61.878)]
-}
-
-[sub_resource type="Animation" id="Animation_vmerw"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-3.34189, -0.400548, -61.8782)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x1re1"]

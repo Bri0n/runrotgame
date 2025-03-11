@@ -22,6 +22,12 @@ var _initial_velocity : Vector3
 var _coyote_time := 0.5
 var _coyote_time_timer = -1
 
+# Sprint FOV lerp
+var normal_fov: float = 75.0
+var sprint_fov: float = 60.0
+var fov_lerp_speed: float = 5.0  # Velocidad de interpolación del FOV
+var is_moving: bool = false
+
 func _init(player : PlayerMovement, parameters : PlayerMovementParameters):
 	_camera = parameters.camera
 	_player = player
@@ -49,6 +55,7 @@ func process_state(delta : float):
 			_player.change_status(PlayerStatusAirborne.new(_player, _parameters))
 	_read_movement_input()
 	_move(delta)
+	_update_fov(delta)
 
 func _read_movement_input():
 	var input_direction := Input.get_vector("move_left", "move_right", "move_forward", "move_backwards")
@@ -76,14 +83,17 @@ func _handle_jump() -> void:
 
 func _move(delta : float) -> void:
 	if _movement_direction:
+		is_moving = true
 		var current_movement_speed : float
 		var current_maximum_speed : float
 		if Input.is_action_pressed("sprint"):
 			current_movement_speed = _sprint_speed
 			current_maximum_speed = _max_sprint_speed
+			#_camera.fov = lerp(_camera.fov, sprint_fov, fov_lerp_speed * delta)
 		else:
 			current_movement_speed = _movement_speed
 			current_maximum_speed = _max_grounded_speed
+			#_camera.fov = lerp(_camera.fov, normal_fov, fov_lerp_speed * delta)
 		var velocity_change_x = _movement_direction.x * _movement_speed * delta
 		var velocity_change_z = _movement_direction.z * _movement_speed * delta
 		var max_velocity = _movement_direction * current_maximum_speed
@@ -94,5 +104,11 @@ func _move(delta : float) -> void:
 	else:
 		_player.velocity.x = move_toward(_player.velocity.x, 0, _stopping_speed * delta)
 		_player.velocity.z = move_toward(_player.velocity.z, 0, _stopping_speed * delta)
+		is_moving = false
 	if _player.velocity.length() > 0:
 		AudioManager.play_footstep_audio()
+
+func _update_fov(delta: float):
+	if is_moving:
+		var target_fov = sprint_fov if Input.is_action_pressed("sprint") else normal_fov
+		_camera.fov = lerp(_camera.fov, target_fov, fov_lerp_speed * delta)

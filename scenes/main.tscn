@@ -21,8 +21,6 @@ jump_velocity = 6.0
 airborne_movement_speed = 15.0
 fall_velocity = 1.5
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
-
 [node name="Hud" parent="." instance=ExtResource("4_jyhfs")]
 
 [editable path="current_level/starting_area"]

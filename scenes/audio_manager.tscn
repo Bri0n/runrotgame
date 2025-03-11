@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cbobyn7u1cwb8" path="res://scripts/audio_manager.gd" id="1_3asnw"]
 [ext_resource type="AudioStream" uid="uid://2trqx48xt366" path="res://audio/music/aerk-core-22-one-257976.mp3" id="2_m6ggh"]
-[ext_resource type="AudioStream" uid="uid://chpvewlngyhj4" path="res://audio/player/Footstep_Boot_Concrete-014.mp3" id="3_aoitu"]
+[ext_resource type="AudioStream" uid="uid://bfirorsqsdugk" path="res://audio/player/footstep_final.mp3" id="3_3asnw"]
 
 [node name="AudioManager" type="Node3D"]
 script = ExtResource("1_3asnw")
@@ -13,5 +13,5 @@ volume_db = -12.51
 autoplay = true
 
 [node name="Footstep1" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("3_aoitu")
+stream = ExtResource("3_3asnw")
 pitch_scale = 1.45

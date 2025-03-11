@@ -143,6 +143,7 @@ sky_material = SubResource("PanoramaSkyMaterial_xnnxd")
 background_mode = 2
 sky = SubResource("Sky_nk3qu")
 sky_rotation = Vector3(0, -3.56396, 0)
+ssao_enabled = true
 
 [sub_resource type="Animation" id="Animation_22m3q"]
 length = 2.0

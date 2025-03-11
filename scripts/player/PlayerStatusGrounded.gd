@@ -28,6 +28,11 @@ var sprint_fov: float = 60.0
 var fov_lerp_speed: float = 5.0  # Velocidad de interpolación del FOV
 var is_moving: bool = false
 
+# Headbob
+var head_bob_intensity = 0.05
+var head_bob_speed = 22.0
+var head_bob_timer = 0.0
+
 func _init(player : PlayerMovement, parameters : PlayerMovementParameters):
 	_camera = parameters.camera
 	_player = player
@@ -89,11 +94,12 @@ func _move(delta : float) -> void:
 		if Input.is_action_pressed("sprint"):
 			current_movement_speed = _sprint_speed
 			current_maximum_speed = _max_sprint_speed
-			#_camera.fov = lerp(_camera.fov, sprint_fov, fov_lerp_speed * delta)
+			head_bob_timer += delta * head_bob_speed
+			_camera.transform.origin.y = sin(head_bob_timer) * head_bob_intensity
 		else:
 			current_movement_speed = _movement_speed
 			current_maximum_speed = _max_grounded_speed
-			#_camera.fov = lerp(_camera.fov, normal_fov, fov_lerp_speed * delta)
+			_camera.transform.origin.y = 0
 		var velocity_change_x = _movement_direction.x * _movement_speed * delta
 		var velocity_change_z = _movement_direction.z * _movement_speed * delta
 		var max_velocity = _movement_direction * current_maximum_speed

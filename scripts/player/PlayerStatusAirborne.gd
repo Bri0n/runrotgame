@@ -60,6 +60,7 @@ func exit_state():
 func process_state(delta : float):
 	if _player.is_on_floor():
 		_player.change_status(PlayerStatusGrounded.new(_player, _parameters))
+		AudioManager.play_landing_audio()
 	else:
 		_player.velocity += _player.get_gravity() * _fall_velocity * delta
 		_read_movement_input()
@@ -100,3 +101,4 @@ func _double_jump():
 	if _extra_jumps > 0:
 		_extra_jumps -= 1
 		_player.velocity.y = _jump_velocity
+		AudioManager.play_jumping_audio(1.1)

@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctuedge65vnm2"]
+[gd_scene load_steps=7 format=3 uid="uid://ctuedge65vnm2"]
 
 [ext_resource type="Script" uid="uid://cbobyn7u1cwb8" path="res://scripts/audio_manager.gd" id="1_3asnw"]
 [ext_resource type="AudioStream" uid="uid://2trqx48xt366" path="res://audio/music/aerk-core-22-one-257976.mp3" id="2_m6ggh"]
 [ext_resource type="AudioStream" uid="uid://bfirorsqsdugk" path="res://audio/player/footstep_final.mp3" id="3_3asnw"]
 [ext_resource type="AudioStream" uid="uid://dea7xair6nbr0" path="res://audio/metal-door-slam-172172.mp3" id="4_m6ggh"]
+[ext_resource type="AudioStream" uid="uid://d2ow7xvbhvxq7" path="res://audio/player/jumping.mp3" id="5_aoitu"]
+[ext_resource type="AudioStream" uid="uid://bxcnoqwxyb0sy" path="res://audio/player/landing.mp3" id="6_njtn3"]
 
 [node name="AudioManager" type="Node3D"]
 script = ExtResource("1_3asnw")
@@ -29,3 +31,11 @@ pitch_scale = 1.4
 stream = ExtResource("4_m6ggh")
 volume_db = -0.937
 pitch_scale = 1.2
+
+[node name="Jumping" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_aoitu")
+volume_db = 9.0
+
+[node name="Landing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_njtn3")
+volume_db = -9.0

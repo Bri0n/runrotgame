@@ -92,6 +92,7 @@ func _handle_jump() -> void:
 	if _coyote_time_timer > 0:
 		_player.velocity.y = _jump_velocity
 		_player.change_status(PlayerStatusAirborne.new(_player, _parameters))
+		AudioManager.play_jumping_audio(1.0)
 
 func _move(delta : float) -> void:
 	
@@ -129,5 +130,5 @@ func _move(delta : float) -> void:
 
 func _update_fov(delta: float):
 	if is_moving:
-		var target_fov = sprint_fov if Input.is_action_pressed("sprint") else normal_fov
+		var target_fov = sprint_fov if Input.is_action_pressed("sprint") else normal_fov #damn that syntaxis
 		_camera.fov = lerp(_camera.fov, target_fov, fov_lerp_speed * delta)

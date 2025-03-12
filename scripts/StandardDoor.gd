@@ -22,12 +22,12 @@ func _input(event: InputEvent) -> void:
 		if is_open:
 			animation_player.play("door_close")
 			is_open = false
-			_toggle_colliders()
 			
 		else:
 			animation_player.play("door_open")
 			is_open = true
-			_toggle_colliders()
+		
+		call_deferred("_toggle_colliders")
 		
 		AudioManager.play_doorslam_audio()
 

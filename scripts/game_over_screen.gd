@@ -5,6 +5,16 @@ var remaining_time : float
 var pickups_count : int
 var final_score : int
 
+# Labels
+@onready var start_button: Button = $VBoxContainer/StartButton
+@onready var quit_button: Button = $VBoxContainer/QuitButton
+@onready var score_label: Label = $VBoxContainer2/HBoxContainer4/score_label
+@onready var pickups_count_label: Label = $VBoxContainer2/HBoxContainer3/pickups_count_label
+@onready var time_elapsed_label: Label = $VBoxContainer2/HBoxContainer/time_elapsed_label
+@onready var time_left_label: Label = $VBoxContainer2/HBoxContainer2/time_left_label
+
+
+# Values
 @onready var time_elapsed_value: Label = $VBoxContainer2/HBoxContainer/time_elapsed_value
 @onready var time_left_value: Label = $VBoxContainer2/HBoxContainer2/time_left_value
 @onready var pickups_count_value: Label = $VBoxContainer2/HBoxContainer3/pickups_count_value
@@ -13,6 +23,7 @@ var final_score : int
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$VBoxContainer/StartButton.grab_focus()
+	_update_texts()
 	elapsed_time = GameManager.elapsed_time
 	remaining_time = GameManager.remanining_time
 	pickups_count = GameManager.pickups_count
@@ -44,3 +55,19 @@ func _on_start_button_pressed() -> void:
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
+
+func _update_texts():
+	if GlobalConstants.game_language == GlobalConstants.GameLanguage.SPANISH:
+		start_button.text = "Volver a empezar"
+		quit_button.text = "Salir"
+		score_label.text = "Puntaje final"
+		pickups_count_label.text = "Papitas recolectadas"
+		time_elapsed_label.text = "Tiempo de juego"
+		time_left_label.text = "Tiempo restante"
+	elif GlobalConstants.game_language == GlobalConstants.GameLanguage.ENGLISH:
+		start_button.text = "Restart"
+		quit_button.text = "Quit"
+		score_label.text = "Final Score"
+		pickups_count_label.text = "Pickup count"
+		time_elapsed_label.text = "Time elapsed"
+		time_left_label.text = "Time leftover"

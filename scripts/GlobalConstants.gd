@@ -8,6 +8,14 @@ enum PlayerMovementCommands {
 
 const PLAYER_NAME := "player"
 
+# Language
+enum GameLanguage {
+	SPANISH,
+	ENGLISH
+}
+
+var game_language = GameLanguage.SPANISH
+
 # Level transition
 const EXIT_HALLWAY_NAME := "exit_transition_hallway"
 const ENTRY_HALLWAY_NAME := "entry_transition_hallway"

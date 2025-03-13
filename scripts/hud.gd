@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 @onready var remaining_time: Label = $remaining_time
 @onready var points_value: Label = $points_value

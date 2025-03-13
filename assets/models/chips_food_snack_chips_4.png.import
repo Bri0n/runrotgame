@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c7d8dsbtbjpym"
 path.s3tc="res://.godot/imported/chips_food_snack_chips_4.png-58358078d71096606c8e8d93979056cb.s3tc.ctex"
+path.etc2="res://.godot/imported/chips_food_snack_chips_4.png-58358078d71096606c8e8d93979056cb.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/chips_food_snack_chips_4.png"
-dest_files=["res://.godot/imported/chips_food_snack_chips_4.png-58358078d71096606c8e8d93979056cb.s3tc.ctex"]
+dest_files=["res://.godot/imported/chips_food_snack_chips_4.png-58358078d71096606c8e8d93979056cb.s3tc.ctex", "res://.godot/imported/chips_food_snack_chips_4.png-58358078d71096606c8e8d93979056cb.etc2.ctex"]
 
 [params]
 

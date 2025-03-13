@@ -5,6 +5,7 @@ var player: PlayerMovement
 # Scene management
 var current_level_node : Node
 var next_level_node : Node
+var loading_screen_node : Control
 
 # Level change
 var levels : PackedStringArray
@@ -49,9 +50,13 @@ func _set_node_variables():
 	current_level_node = get_node(GlobalConstants.CURRENT_LEVEL_NODE_PATH)
 	next_level_node = get_node(GlobalConstants.NEXT_LEVEL_NODE_PATH)
 	player = get_node(GlobalConstants.PLAYER_NODE_PATH)
+	loading_screen_node = get_node(GlobalConstants.LOADING_SCREEN_NODE_PATH)
+	loading_screen_node.text = ""
 
 func _set_gameplay_variables():
 	counting_down = true
+	score = 0
+	remanining_time = 300.0
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _delete_main_menu():
@@ -59,7 +64,6 @@ func _delete_main_menu():
 	get_tree().current_scene = get_node(GlobalConstants.MAIN_SCENE_NODE_PATH)
 
 func restart_game():
-	score = 0
 	start_game("_delete_game_over_screen")
 
 func _delete_game_over_screen():
@@ -74,6 +78,7 @@ func _on_timer_timeout():
 
 func end_game():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	counting_down = false
 	get_tree().change_scene_to_file(GlobalConstants.GAME_OVER_SCENE_PATH)
 
 func process_pickup(points : int = 0, seconds : float = 0):
@@ -82,10 +87,18 @@ func process_pickup(points : int = 0, seconds : float = 0):
 	increase_remaining_time(seconds)
 
 func load_next_scene():
+	if GlobalConstants.game_language == GlobalConstants.GameLanguage.SPANISH:
+		loading_screen_node.text = "Cargando..."
+	elif GlobalConstants.game_language == GlobalConstants.GameLanguage.ENGLISH:
+		loading_screen_node.text = "Loading..."
+	call_deferred("_load_next_scene_transition")
+	
+func _load_next_scene_transition():
 	var path_to_next_level = GlobalConstants.LEVELS_FOLDER_PATH + next_level_name
 	var next_level_instance = load(path_to_next_level).instantiate()
 	next_level_node.add_child(next_level_instance)
 	call_deferred("_complete_transition")
+
 
 func _complete_transition():
 	var exit_transition_hallway : Node3D = current_level_node.get_child(0).get_node(GlobalConstants.EXIT_HALLWAY_NAME)
@@ -101,6 +114,7 @@ func unload_previous_scene():
 	current_level_node.get_child(0).queue_free()
 	next_level_node.get_child(0).reparent(current_level_node)
 	current_level_name = next_level_name
+	loading_screen_node.text = ""
 	select_next_level()
 
 func select_next_level():

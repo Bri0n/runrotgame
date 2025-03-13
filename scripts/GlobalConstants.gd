@@ -28,6 +28,8 @@ const CURRENT_LEVEL_NODE_PATH := "/root/game/current_level"
 const NEXT_LEVEL_NODE_PATH :="/root/game/next_level"
 const MAIN_MENU_NODE_PATH := "/root/MainMenu"
 const MAIN_SCENE_NODE_PATH := "/root/game"
+const LOADING_SCREEN_NODE_PATH := "/root/game/loading_screen/loading_text"
+const HUD_NODE_PATH := "/root/game/hud"
 
 # Game over
 const GAME_OVER_SCENE_PATH := "res://scenes/game_over.tscn"

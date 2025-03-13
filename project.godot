@@ -23,11 +23,6 @@ GlobalConstants="*res://scripts/GlobalConstants.gd"
 GameManager="*res://scenes/GameManager.tscn"
 AudioManager="*res://scenes/audio_manager.tscn"
 
-[display]
-
-window/size/viewport_width=1280
-window/size/viewport_height=720
-
 [editor]
 
 movie_writer/movie_file="/var/home/brionzer/Godot/runrotgame/gameplay_test.avi"
@@ -110,9 +105,10 @@ sprint={
 
 [rendering]
 
-textures/canvas_textures/default_texture_filter=0
-textures/canvas_textures/default_texture_repeat=1
-renderer/rendering_method="mobile"
+gl_compatibility/driver="opengl2"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
 lights_and_shadows/size/mode=0
 lights_and_shadows/size/viewport_height=720
 

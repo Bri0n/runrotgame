@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ccyxet2dmika2"
 path.s3tc="res://.godot/imported/hazy_nebulae_1.png-4217e646fc3702901b3b1af85a7a5f3d.s3tc.ctex"
+path.etc2="res://.godot/imported/hazy_nebulae_1.png-4217e646fc3702901b3b1af85a7a5f3d.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/textures/skyboxes/hazy_nebulae_1.png"
-dest_files=["res://.godot/imported/hazy_nebulae_1.png-4217e646fc3702901b3b1af85a7a5f3d.s3tc.ctex"]
+dest_files=["res://.godot/imported/hazy_nebulae_1.png-4217e646fc3702901b3b1af85a7a5f3d.s3tc.ctex", "res://.godot/imported/hazy_nebulae_1.png-4217e646fc3702901b3b1af85a7a5f3d.etc2.ctex"]
 
 [params]
 

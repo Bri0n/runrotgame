@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ds4hb0cvbmf8e"
 path.s3tc="res://.godot/imported/ringed_gas_giant_planet.png-f45f9d41cd84792748eea254abd55a0d.s3tc.ctex"
+path.etc2="res://.godot/imported/ringed_gas_giant_planet.png-f45f9d41cd84792748eea254abd55a0d.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/textures/skyboxes/ringed_gas_giant_planet.png"
-dest_files=["res://.godot/imported/ringed_gas_giant_planet.png-f45f9d41cd84792748eea254abd55a0d.s3tc.ctex"]
+dest_files=["res://.godot/imported/ringed_gas_giant_planet.png-f45f9d41cd84792748eea254abd55a0d.s3tc.ctex", "res://.godot/imported/ringed_gas_giant_planet.png-f45f9d41cd84792748eea254abd55a0d.etc2.ctex"]
 
 [params]
 

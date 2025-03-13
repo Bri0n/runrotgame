@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://2v0tvtg2gys4"
 path.bptc="res://.godot/imported/meadow_4k.exr-1c1273fb1c7b26199a072762d801c82e.bptc.ctex"
+path.astc="res://.godot/imported/meadow_4k.exr-1c1273fb1c7b26199a072762d801c82e.astc.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/textures/skyboxes/meadow_4k.exr"
-dest_files=["res://.godot/imported/meadow_4k.exr-1c1273fb1c7b26199a072762d801c82e.bptc.ctex"]
+dest_files=["res://.godot/imported/meadow_4k.exr-1c1273fb1c7b26199a072762d801c82e.bptc.ctex", "res://.godot/imported/meadow_4k.exr-1c1273fb1c7b26199a072762d801c82e.astc.ctex"]
 
 [params]
 

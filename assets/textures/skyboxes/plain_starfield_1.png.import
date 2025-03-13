@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://er1cebdigmqg"
 path.s3tc="res://.godot/imported/plain_starfield_1.png-9f9ac0d758578316fdf904db6be73138.s3tc.ctex"
+path.etc2="res://.godot/imported/plain_starfield_1.png-9f9ac0d758578316fdf904db6be73138.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/textures/skyboxes/plain_starfield_1.png"
-dest_files=["res://.godot/imported/plain_starfield_1.png-9f9ac0d758578316fdf904db6be73138.s3tc.ctex"]
+dest_files=["res://.godot/imported/plain_starfield_1.png-9f9ac0d758578316fdf904db6be73138.s3tc.ctex", "res://.godot/imported/plain_starfield_1.png-9f9ac0d758578316fdf904db6be73138.etc2.ctex"]
 
 [params]
 

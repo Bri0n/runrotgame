@@ -32,5 +32,5 @@ func _input(event: InputEvent) -> void:
 		AudioManager.play_doorslam_audio()
 
 func _toggle_colliders():
-	door_opened_collider.disabled = !is_open
-	door_closed_collider.disabled = is_open
+	set_deferred("door_opened_collider.disabled", !is_open)
+	set_deferred("door_closed_collider.disabled", is_open)

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://boply2ockgg6m"
 path.s3tc="res://.godot/imported/carpet_tan_01.jpg-7f56569fb3ceaace0341f7a3d5df94ba.s3tc.ctex"
+path.etc2="res://.godot/imported/carpet_tan_01.jpg-7f56569fb3ceaace0341f7a3d5df94ba.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/textures/carpet_tan_01.jpg"
-dest_files=["res://.godot/imported/carpet_tan_01.jpg-7f56569fb3ceaace0341f7a3d5df94ba.s3tc.ctex"]
+dest_files=["res://.godot/imported/carpet_tan_01.jpg-7f56569fb3ceaace0341f7a3d5df94ba.s3tc.ctex", "res://.godot/imported/carpet_tan_01.jpg-7f56569fb3ceaace0341f7a3d5df94ba.etc2.ctex"]
 
 [params]
 

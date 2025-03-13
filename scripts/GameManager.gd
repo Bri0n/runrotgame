@@ -59,6 +59,7 @@ func _delete_main_menu():
 	get_tree().current_scene = get_node(GlobalConstants.MAIN_SCENE_NODE_PATH)
 
 func restart_game():
+	score = 0
 	start_game("_delete_game_over_screen")
 
 func _delete_game_over_screen():
